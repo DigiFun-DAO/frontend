@@ -10,9 +10,9 @@ export default function Footer() {
         <img className="connect_send_button" src={require("../assets/Button-Send.svg").default}/>
       </div>
       <div className="footer_icon_frame">
-        {/*<a href="https://discord.gg/6tArQY6WGu">*/}
-        <img className="email_icon" src={require("../assets/email.svg").default}/>
-        {/*</a>*/}
+        <a href="mailto:official@digifundao.com">
+          <img className="email_icon" src={require("../assets/email.svg").default}/>
+        </a>
         <a href="https://twitter.com/DigiFun_">
           <img className="twitter_icon" src={require("../assets/logo-twitter.svg").default}/>
         </a>

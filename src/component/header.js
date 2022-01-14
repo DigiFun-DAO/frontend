@@ -10,7 +10,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     const strs = window.location.href.split('/')
-    this.state = {button_selected: [true, false, false]};
+    this.state = {button_selected: [false, false, false]};
     if (strs[strs.length - 1] === "about") {
       this.state = {button_selected: [false, false, true]};
     } else if (strs[strs.length - 1] === "DAO") {
@@ -46,27 +46,35 @@ class Header extends React.Component {
                   onMouseEnter={() => {
                     this.setState({button_selected: [true, false, false]})
                   }}
+                  onMouseLeave={() => {
+                    this.setState({button_selected: [false, false, false]})
+                  }}
                   onClick={() => {
                     history.push('/#/product')
                     window.location.reload()
                   }}>
             <div className={this.state.button_selected[0] === true ? "word_selected" : "word_empty"}>Product</div>
           </button>
-          <button className={this.state.button_selected[1] === true ? "button_selected" : "button_empty"}
-                  style={{cursor: 'pointer'}}
-                  onMouseEnter={() => {
-                    this.setState({button_selected: [false, true, false]})
-                  }}
-                  onClick={() => {
-                    history.push('/')
-                    window.location.reload()
-                  }}>
-            <div className={this.state.button_selected[1] === true ? "word_selected" : "word_empty"}>DAO</div>
-          </button>
+          <a style={{textDecoration: "none"}}
+             href="https://snapshot.org/#/digifun.eth">
+            <button className={this.state.button_selected[1] === true ? "button_selected" : "button_empty"}
+                    style={{cursor: 'pointer'}}
+                    onMouseEnter={() => {
+                      this.setState({button_selected: [false, true, false]})
+                    }}
+                    onMouseLeave={() => {
+                      this.setState({button_selected: [false, false, false]})
+                    }}>
+              <div className={this.state.button_selected[1] === true ? "word_selected" : "word_empty"}>DAO</div>
+            </button>
+          </a>
           <button className={this.state.button_selected[2] === true ? "button_selected" : "button_empty"}
                   style={{cursor: 'pointer'}}
                   onMouseEnter={() => {
                     this.setState({button_selected: [false, false, true]})
+                  }}
+                  onMouseLeave={() => {
+                    this.setState({button_selected: [false, false, false]})
                   }}
                   onClick={() => {
                     history.push('/#/about')

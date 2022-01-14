@@ -236,7 +236,7 @@
 .slogan_buttons_join_selected{
     position: relative;
     width: 180px;
-    top: -10px;
+    top: -4px;
 }
 
 .slogan_buttons_voting{
@@ -247,7 +247,7 @@
 .slogan_buttons_voting_selected{
     position: relative;
     width: 180px;
-    top: -10px;
+    top: -4px;
 }
 
 .blur_yellow{
@@ -559,7 +559,7 @@
 
     position: relative;
     height: 130px;
-    margin-top: 40px;
+    margin-top: 46px;
 }
 
 .DAO_frame{
@@ -707,7 +707,7 @@
     /*width: 153px;*/
     height: 110px;
     margin-left: -27px;
-    margin-top: 30px;
+    margin-top: 36px;
 }
 
 .footer{
@@ -784,7 +784,7 @@
     float: right;
     width: 96px;
     margin-right: 156px;
-    margin-top: 120px;
+    margin-top: 105px;
 }
 
 .email_icon{
