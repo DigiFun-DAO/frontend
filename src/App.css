@@ -32,17 +32,98 @@
 
 .header_frame {
     /*position: absolute;*/
+    float: left;
+    margin-top: 30px;
+    margin-left: 400px;
+}
+
+.header_wallet {
+    /*position: absolute;*/
     float: right;
     margin-top: 30px;
     margin-right: 80px;
 }
 
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* 容器 <div> - 需要定位下拉内容 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* 下拉内容 (默认隐藏) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: -50px;
+    background-color: #f9f9f9;
+    width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.dropdown-content_default {
+    display: none;
+    position: absolute;
+    left: -50px;
+    background-color: #f9f9f9;
+    width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+
+    color: #222222;
+}
+
+/* 下拉菜单的链接 */
+.dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* 鼠标移上去后修改下拉菜单链接颜色 */
+.dropdown-content div:hover {
+    background-color: #f1f1f1;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    color: #A22873;
+}
+
+/* 在鼠标移上去后显示下拉菜单 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* 当下拉内容显示后修改下拉按钮的背景颜色 */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
 .button_selected{
-    display: inline;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    padding: 8px 24px;
+    /*padding: 8px 24px;*/
 
     position: static;
     width: 103px;
@@ -55,16 +136,53 @@
     border: none;
 }
 
-.word_selected{
-    position: static;
-    width: 55px;
-    height: 24px;
-    left: 24px;
-    top: 8px;
+.button_wallet{
+    align-items: center;
+    /*padding: 8px 24px;*/
 
-    font-family: Poppins;
+    position: static;
+    width: 150px;
+    height: 40px;
+    left: 0px;
+    top: 0px;
+
+    background: #A22873;
+    border-radius: 6px;
+    border: none;
+}
+
+.icon_wallet{
+    align-items: center;
+
+    position: static;
+    left: 0px;
+    top: 0px;
+}
+
+.word_selected{
+    /*position: static;*/
+    width: 90px;
+    /*height: 24px;*/
+    /*top: 8px;*/
+
+    font-family: Poppins-Bold;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #FFFFFF;
+}
+
+.wallet_selected{
+    /*position: static;*/
+    width: 140px;
+    /*height: 24px;*/
+    /*top: 8px;*/
+
+    font-family: Poppins-Bold;
+    font-style: normal;
+    font-weight: 600;
     font-size: 14px;
     line-height: 24px;
 
@@ -715,7 +833,6 @@
     width: 100%;
     height: 228px;
 
-
     background: #F9F9FB;
 }
 
@@ -723,13 +840,13 @@
     position: absolute;
     width: 800px;
     height: 52px;
-    left: 10.8%;
+    /*left: 10.8%;*/
     top: 48px;
 }
 
 .connect{
     position: absolute;
-    width: 149px;
+    width: 400px;
     height: 45px;
     top: 51px;
 
@@ -746,21 +863,26 @@
 }
 
 .connect_input{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*align-items: center;*/
     padding: 6px 16px 5px;
 
-    position: relative;
+    position: absolute;
     width: 382px;
     height: 52px;
-    margin-left: 180px;
+    left: 180px;
     top: 48px;
 
     background: #F9F9FB;
     border: 1px solid #E4E4E4;
     box-sizing: border-box;
     border-radius: 8px;
+
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
 }
 
 .connect_send_button{
@@ -768,11 +890,35 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 14px 34px;
 
-    position: relative;
+    position: absolute;
     width: 160px;
-    left: 580px;
-    top: -20px;
+    height: 52px;
+    margin-left: 600px;
+    /*left: 600px;*/
+    top: 48px;
+    cursor: pointer;
+
+    background: linear-gradient(180deg, #D24C9F 0%, #A22873 100%);
+    box-shadow: 0px 14px 30px rgba(179, 13, 72, 0.16);
+    border-radius: 8px;
+    border: none;
+}
+
+.connect_send_button_words {
+    font-family: Poppins-Bold;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height */
+
+    text-align: center;
+
+    /* Black & White/White */
+
+    color: #FFFFFF;
 }
 
 .footer_icon_frame{

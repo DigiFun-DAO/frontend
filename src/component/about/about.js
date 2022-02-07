@@ -9,7 +9,7 @@ class About extends React.Component {
   render() {
     return (
       <div className="product_content_frame">
-        <Header/>
+        {/*<Header/>*/}
         <div className="product_content">
           <div className="product_content_words">
             <div className="product_content_words_title">About Us</div>

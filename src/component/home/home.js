@@ -16,7 +16,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Header/>
+        {/*<Header/>*/}
         <Top/>
         <Product/>
         <DAO/>

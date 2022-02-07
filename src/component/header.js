@@ -1,10 +1,8 @@
 // 页面顶部栏
 import React from "react";
 import '../App.css';
-import {createBrowserHistory} from 'history'
-
-const history = createBrowserHistory()
-
+import history from '../history'
+import Metamask from "./wallet/metamask";
 
 class Header extends React.Component {
   constructor(props) {
@@ -30,7 +28,6 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(window.temp)
     return (
       <div className="header">
         <img className="logo" src={require("../assets/logo.svg").default}
@@ -83,6 +80,15 @@ class Header extends React.Component {
             <div className={this.state.button_selected[2] === true ? "word_selected" : "word_empty"}>About</div>
           </button>
         </div>
+        <Metamask/>
+        {/*<div className="header_wallet">*/}
+        {/*  <button className="button_wallet"*/}
+        {/*          style={{cursor: 'pointer'}}*/}
+        {/*          onClick={() => {*/}
+        {/*          }}>*/}
+        {/*    <div className="word_selected">Connect Wallet</div>*/}
+        {/*  </button>*/}
+        {/*</div>*/}
       </div>
     );
   }

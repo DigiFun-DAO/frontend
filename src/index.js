@@ -1,30 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from "react-dom";
+import {render} from "react-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {
-  HashRouter,
-  Routes,
-  Route
-} from "react-router-dom"
+import {Routes, Route, HashRouter} from "react-router-dom"
 import ProductContent from "./component/product/productContent";
 import ProductDetail from "./component/product/productDetail";
 import About from "./component/about/about";
+import {Web3ReactProvider} from '@web3-react/core'
+import Web3 from 'web3'
+import Header from "./component/header";
 
+function getLibrary(provider) {
+  return new Web3(provider)
+}
 
 const rootElement = document.getElementById("root");
 render(
-  <HashRouter>
-    <Routes>
-      <Route path={"" + "/"} element={<App />}/>
-      <Route path={"" + "/product"} element={<ProductContent />}/>
-      <Route path={"" + "/product/detail/:id"} element={<ProductDetail />}/>
-      <Route path={"" + "/about"} element={<About />}/>
-
-    </Routes>
-  </HashRouter>,
+  <Web3ReactProvider getLibrary={getLibrary}>
+    <HashRouter>
+      <Header/>
+      <Routes>
+        <Route path={"" + "/"} element={<App/>}/>
+        <Route path={"" + "/product"} element={<ProductContent/>}/>
+        <Route path={"" + "/product/detail/:id"} element={<ProductDetail/>}/>
+        <Route path={"" + "/about"} element={<About/>}/>
+      </Routes>
+    </HashRouter>
+  </Web3ReactProvider>,
   rootElement
 );
 
