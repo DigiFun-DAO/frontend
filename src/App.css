@@ -32,9 +32,9 @@
 
 .header_frame {
     /*position: absolute;*/
-    float: left;
+    float: right;
     margin-top: 30px;
-    margin-left: 400px;
+    margin-right: 200px;
 }
 
 .header_wallet {
