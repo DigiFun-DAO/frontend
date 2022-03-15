@@ -2,9 +2,8 @@ import React from "react"
 import './product.css'
 import '../../App.css'
 import '../product/productContent'
-import Header from "../header";
+import BuyNFT from "../wallet/buyNFT";
 import Footer from "../footer";
-import {platform} from "process";
 
 class ProductDetail extends React.Component {
 
@@ -12,10 +11,10 @@ class ProductDetail extends React.Component {
   constructor(props, context) {
     super(props, context)
     const strs = window.location.href.split('/')
-    this.state = global.products.find(iterm => iterm.id == strs[strs.length - 1])
+    this.state = global.products.find(item => item.id == strs[strs.length - 1])
     this.state.button_selected = false
     this.state.platform_selected_idx = 0
-    this.state.platforms = ['DECENTRALAND', 'CRYPTO VOXELS']
+    this.state.platforms = ['DECENTRALAND', 'DIGIFUN DAO']
   }
 
   render() {
@@ -80,18 +79,21 @@ class ProductDetail extends React.Component {
               {/*     style={{marginLeft: '38px'}}/>*/}
               {/*<span className="product_content_detail_prize_words_eth">{this.state.prize_eth}</span>*/}
             </div>
-            <a href={this.state.url}>
-              <button className={this.state.button_selected === true ? "buy_button_selected" : "buy_button_empty"}
-                      style={{cursor: 'pointer'}}
-                      onMouseEnter={() => {
-                        this.setState({button_selected: true})
-                      }}
-                      onMouseLeave={() => {
-                        this.setState({button_selected: false})
-                      }}>
-                <div className="buy_button_words">BUY</div>
-              </button>
-            </a>
+            {this.state.platform_selected_idx === 0 ?
+              <a href={this.state.url}>
+                <button className={this.state.button_selected === true ? "buy_button_selected" : "buy_button_empty"}
+                        style={{cursor: 'pointer'}}
+                        onMouseEnter={() => {
+                          this.setState({button_selected: true})
+                        }}
+                        onMouseLeave={() => {
+                          this.setState({button_selected: false})
+                        }}>
+                  <div className="buy_button_words">BUY</div>
+                </button>
+            </a>:<BuyNFT/>
+            }
+
             <div className='product_photos'>
               <div className="product_history_frame">
                 <div className='product_history_words'>

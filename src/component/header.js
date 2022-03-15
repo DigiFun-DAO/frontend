@@ -93,7 +93,7 @@ class Header extends React.Component {
             </button>
           </a>
         </div>
-        {/*<Metamask/>*/}
+        <Metamask/>
         {/*<div className="header_wallet">*/}
         {/*  <button className="button_wallet"*/}
         {/*          style={{cursor: 'pointer'}}*/}

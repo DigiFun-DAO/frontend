@@ -107,6 +107,23 @@ global.products = [
     css: "product_content_img_frame_normal",
     cssDetail: "product_item_photo_normal",
     detail: "Ice Shadow was born with super abilities, his parents have mutated with a bat, causing it to have some human sized mat black wings, being able to fly as fast as speed of light. But because he was born in a super ice research laboratory, he is able to manipulate ice and cold by freezing all the water around him, this ability is mainly to maintain his body temperature as he can´t survive in normal temperature conditions. Because he needs to be living in extremely cold temperatures, he wants to convert our meta world into a freeze planet that’s why everyone also knows him as the devil of ice. "
+  },
+  {
+    id: 6,
+    imgPath: "product7.png",
+    detailPath: ["product6_detail1.png", "product6_detail2.png", "product6_detail3.png", "product6_detail4.png", "product6_detail5.png"],
+    title: "Ice Shadow",
+    url: "https://market.decentraland.org/contracts/0x9b0a93ea49955a5ef1878c1a1e8f8645d049e597/items/1",
+    source: "Polygon",
+    prize: 19,
+    prize_eth: 2,
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "A cloak and body supported by ice",
+    width: "50%",
+    css: "product_content_img_frame_normal",
+    cssDetail: "product_item_photo_normal",
+    detail: "Ice Shadow was born with super abilities, his parents have mutated with a bat, causing it to have some human sized mat black wings, being able to fly as fast as speed of light. But because he was born in a super ice research laboratory, he is able to manipulate ice and cold by freezing all the water around him, this ability is mainly to maintain his body temperature as he can´t survive in normal temperature conditions. Because he needs to be living in extremely cold temperatures, he wants to convert our meta world into a freeze planet that’s why everyone also knows him as the devil of ice. "
   }
 ]
 
