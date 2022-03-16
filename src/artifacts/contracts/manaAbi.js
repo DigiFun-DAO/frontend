@@ -1,4 +1,4 @@
-[
+export const MANA_ABI = [
   {
     "inputs": [],
     "stateMutability": "nonpayable",

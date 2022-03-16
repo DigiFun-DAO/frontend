@@ -1,9 +1,9 @@
 import {useWeb3React} from "@web3-react/core"
 import React, {useEffect} from "react"
 import {injected} from "./connectors"
+import {MANA_ABI} from '../../artifacts/contracts/manaAbi.js'
+import {Aggregator_ABI} from '../../artifacts/contracts/Aggregator.js'
 import Web3 from 'web3'
-import manaABI from '../../artifacts/contracts/MANA.json'
-import aggregatorABI from'../../artifacts/contracts/Aggregator.json'
 
 const manaAddress = "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4"
 const aggregatorAddress = "0x3C3C499Db5605672995C448dd4262c1952Ac22a7"
@@ -15,34 +15,32 @@ export default function BuyNFT() {
   const nftState = global.products.find(item => item.id == strs[strs.length - 1])
 
   const {active, account, library, connector, activate, deactivate} = useWeb3React()
-  const w3 = new Web3(library.provider)
+  const w3 = new Web3(Web3.givenProvider)
 
-  function getContract(library, abi, address) {
-    return new w3.eth.Contract(abi, address)
+  const mana = new w3.eth.Contract(MANA_ABI, manaAddress)
+  const aggregator = new w3.eth.Contract(Aggregator_ABI, aggregatorAddress)
+
+  async function buy() {
+    await mana.methods
+      .approve(aggregatorAddress, w3.utils.toWei(nftState['prize'].toString(), 'ether'))
+      .send({from: account}, function (err, res) {
+        if (err) {
+          console.log("An error occured", err)
+          return
+        }
+        console.log("tx hash: ", res)
+      })
+    await aggregator.methods
+      .buyNFTGroup(account, nftState['title'])
+      .send({from: account}, function (err, res) {
+        if (err) {
+          console.log("An error occured", err)
+          return
+        }
+        console.log("tx hash: ", res)
+      })
   }
 
-  console.log(manaABI)
-  console.log(typeof manaABI)
-  const mana = getContract(library, manaABI.abi, manaAddress)
-  const aggregator = getContract(library, aggregatorABI, aggregatorAddress)
-  mana.methods
-    .approve(aggregatorAddress, w3.utils.toWei(nftState['prize'], 'ether'))
-    .send({from: account}, function (err, res) {
-    if (err) {
-      console.log("An error occured", err)
-      return
-    }
-    console.log("tx hash: ", res)
-  })
-
-  // contract.methods
-  //   .exit()
-  //   .send({
-  //     from: account,
-  //   })
-  //   .on('transactionHash', (hash) => {
-  //
-  //   })
 
   useEffect(() => {
     const connectWalletOnPageLoad = async () => {
@@ -59,17 +57,15 @@ export default function BuyNFT() {
   }, [])
 
   return (
-    <button className={this.state.button_selected === true ? "buy_button_selected" : "buy_button_empty"}
+    <button className={nftState['button_selected'] === true ? "buy_button_selected" : "buy_button_empty"}
             style={{cursor: 'pointer'}}
             onMouseEnter={() => {
-              this.setState({button_selected: true})
+              nftState['button_selected'] = true
             }}
             onMouseLeave={() => {
-              this.setState({button_selected: false})
+              nftState['button_selected'] = false
             }}
-            // onCLick={
-            //
-            // }
+      onClick={buy}
     >
       <div className="buy_button_words">BUY</div>
     </button>
