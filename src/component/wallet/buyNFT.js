@@ -6,8 +6,7 @@ import {Aggregator_ABI} from '../../artifacts/contracts/Aggregator.js'
 import Web3 from 'web3'
 
 const manaAddress = "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4"
-const aggregatorAddress = "0x3C3C499Db5605672995C448dd4262c1952Ac22a7"
-
+const aggregatorAddress = "0xCEC5168cd1DFA9b5Fbe44fE8960E0acd22A57F52"
 
 export default function BuyNFT() {
 
@@ -20,25 +19,36 @@ export default function BuyNFT() {
   const mana = new w3.eth.Contract(MANA_ABI, manaAddress)
   const aggregator = new w3.eth.Contract(Aggregator_ABI, aggregatorAddress)
 
+  let button_selected = false
+
   async function buy() {
-    await mana.methods
-      .approve(aggregatorAddress, w3.utils.toWei(nftState['prize'].toString(), 'ether'))
-      .send({from: account}, function (err, res) {
-        if (err) {
-          console.log("An error occured", err)
-          return
-        }
-        console.log("tx hash: ", res)
-      })
-    await aggregator.methods
-      .buyNFTGroup(account, nftState['title'])
-      .send({from: account}, function (err, res) {
-        if (err) {
-          console.log("An error occured", err)
-          return
-        }
-        console.log("tx hash: ", res)
-      })
+    let allowance = await mana.methods.allowance(account, aggregatorAddress).call()
+    console.log(allowance)
+    if (w3.utils.toWei(allowance) < w3.utils.toWei(''+nftState['prize'], 'ether')) {
+      mana.methods
+        .approve(aggregatorAddress, w3.utils.toWei("999999999999", 'ether'))
+        .send({from: account}, function (err, res) {
+          if (err) {
+            window.alert("approve allowance failed")
+          }
+        })
+    } else if (nftState['isGroup'] === true){
+      aggregator.methods
+        .buyNFTGroup(account, nftState['title'])
+        .send({from: account}, function (err, res) {
+          if (err) {
+            window.alert("buy nft group failed")
+          }
+        })
+    } else {
+      aggregator.methods
+        .buyNFT(account, nftState['title'])
+        .send({from: account}, function (err, res) {
+          if (err) {
+            window.alert("buy nft failed")
+          }
+        })
+    }
   }
 
 
@@ -57,13 +67,13 @@ export default function BuyNFT() {
   }, [])
 
   return (
-    <button className={nftState['button_selected'] === true ? "buy_button_selected" : "buy_button_empty"}
+    <button className={button_selected === true ? "buy_button_selected" : "buy_button_empty"}
             style={{cursor: 'pointer'}}
             onMouseEnter={() => {
-              nftState['button_selected'] = true
+              button_selected = true
             }}
             onMouseLeave={() => {
-              nftState['button_selected'] = false
+              button_selected = false
             }}
       onClick={buy}
     >
