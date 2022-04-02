@@ -1,7 +1,6 @@
 import {useWeb3React} from "@web3-react/core"
 import {useEffect} from "react"
 import {injected} from "./connectors"
-import Menu from 'muse-ui';
 
 export default function Metamask() {
   const menu = (

@@ -39,7 +39,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "abi:api": "converted -d --entry './src/artifacts/contracts-json/' --chainId 137 -js"
   },
   "eslintConfig": {
     "extends": [
