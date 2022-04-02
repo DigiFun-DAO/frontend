@@ -23,7 +23,6 @@ export default function BuyNFT() {
 
   async function buy() {
     let allowance = await mana.methods.allowance(account, aggregatorAddress).call()
-    console.log(allowance)
     if (w3.utils.toWei(allowance) < w3.utils.toWei(''+nftState['prize'], 'ether')) {
       mana.methods
         .approve(aggregatorAddress, w3.utils.toWei("999999999999", 'ether'))
