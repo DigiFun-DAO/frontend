@@ -5,6 +5,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box; /* Firefox */
+  -webkit-box-sizing:border-box; /* Safari */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -28,4 +40,81 @@ code {
 @font-face {
   font-family: 'DQHT'; 
   src: url(./assets/fonts/DongQingHeiTi-1.otf)
+}
+
+.ellipsis {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.ellipsis3 {
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-line-clamp: 3;
+     display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ellipsis2 {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-line-clamp: 2;
+   display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loading {
+  border-radius: 50%;
+  --mask: radial-gradient(closest-side, transparent 75%, black 76%);
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+  animation: spin 1s linear infinite reverse;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#loading{
+  background: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  margin-top: 0px;
+  top: 0px;
+}
+#loading-center{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  }
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex-x-center{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.flex-y-center{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }

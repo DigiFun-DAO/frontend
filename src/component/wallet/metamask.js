@@ -1,6 +1,6 @@
-import {useWeb3React} from "@web3-react/core"
-import {useEffect} from "react"
-import {injected} from "./connectors"
+import { useWeb3React } from "@web3-react/core"
+import { useEffect } from "react"
+import { injected } from "./connectors"
 
 export default function Metamask() {
   const menu = (
@@ -26,7 +26,7 @@ export default function Metamask() {
     </mu-menu>
   );
 
-  const {active, account, library, connector, activate, deactivate} = useWeb3React()
+  const { active, account, library, connector, activate, deactivate } = useWeb3React()
 
   async function connect() {
     try {
@@ -65,7 +65,7 @@ export default function Metamask() {
       {
         active ?
           <div className="dropdown">
-            <img className="icon_wallet" src={require("../../assets/wallet.svg").default}/>
+            <img className="icon_wallet" src={require("../../assets/wallet.svg").default} />
             <div className="dropdown-content">
               <div>{account.substring(0, 4) + "..." + account.substring(account.length - 8)}</div>
               <div onClick={disconnect}>Log out</div>
@@ -73,8 +73,8 @@ export default function Metamask() {
           </div>
           :
           <button className="button_wallet"
-                  style={{cursor: 'pointer'}}
-                  onClick={connect}>
+            style={{ cursor: 'pointer' }}
+            onClick={connect}>
             <div className="wallet_selected">Connect Wallet</div>
           </button>
       }

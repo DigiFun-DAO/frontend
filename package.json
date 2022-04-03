@@ -29,7 +29,6 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "stream-browserify": "3.0.0",
-    "tailwindcss": "^3.0.7",
     "util": "0.12.4",
     "view-design": "^4.7.0",
     "web-vitals": "^1.0.1",
@@ -39,8 +38,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "abi:api": "converted -d --entry './src/artifacts/contracts-json/' --chainId 137 -js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

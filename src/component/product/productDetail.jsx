@@ -1,8 +1,9 @@
 import React from "react"
 import './product.css'
 import '../../App.css'
-import '../product/productContent'
+import './productContent'
 import BuyNFT from "../wallet/buyNFT";
+import Transfer from "./transfer";
 import Footer from "../footer";
 
 class ProductDetail extends React.Component {
@@ -24,54 +25,54 @@ class ProductDetail extends React.Component {
         <div className='product_item_frame'>
           <div className='product_item_frame_absolute'>
             <div className={this.state.cssDetail}>
-              <img src={require('../../assets/' + this.state.imgPath).default} style={{width: this.state.width}}/>
+              <img src={require('../../assets/' + this.state.imgPath).default} style={{ width: this.state.width }} />
             </div>
             <div className='product_item_photo_title'>{this.state.title}</div>
             <div className='product_item_icons'>
               <img src={require('../../assets/' + this.state.class).default}
-                   className="product_item_icon1"/>
+                className="product_item_icon1" />
               <img src={require('../../assets/' + this.state.sex).default}
-                   className="product_item_icon2"/>
+                className="product_item_icon2" />
             </div>
-            <div className='product_desc' style={{marginTop: '140px'}}>
+            <div className='product_desc' style={{ marginTop: '140px' }}>
               DESCRIPTION
             </div>
-            <div className='product_words' style={{marginTop: '140px'}}>
+            <div className='product_words' style={{ marginTop: '140px' }}>
               {this.state.desc}
             </div>
-            <div className='product_desc' style={{marginTop: '230px'}}>
+            <div className='product_desc' style={{ marginTop: '230px' }}>
               NETWORK
             </div>
-            <div className='product_words' style={{marginTop: '230px'}}>
+            <div className='product_words' style={{ marginTop: '230px' }}>
               {this.state.source}
             </div>
-            <div className='product_desc' style={{marginTop: '295px'}}>
+            <div className='product_desc' style={{ marginTop: '295px' }}>
               PLATFORM
             </div>
             {
               this.state.platforms.map((item, index) => {
-                  const leftPos = 600 + 160 * index
-                  return (
-                    <div className={index === this.state.platform_selected_idx ?
-                      'product_platform_selected' : 'product_platform'}
-                         style={{marginTop: '290px', marginLeft: leftPos + 'px'}}
-                         onClick={() => {
-                           this.setState({platform_selected_idx: index})
-                         }}
-                    >
-                      {item}
-                    </div>
-                  )
-                }
+                const leftPos = 600 + 160 * index
+                return (
+                  <div key={index} className={index === this.state.platform_selected_idx ?
+                    'product_platform_selected' : 'product_platform'}
+                    style={{ marginTop: '290px', marginLeft: leftPos + 'px' }}
+                    onClick={() => {
+                      this.setState({ platform_selected_idx: index })
+                    }}
+                  >
+                    {item}
+                  </div>
+                )
+              }
               )
             }
-            <div className='product_desc' style={{marginTop: '360px'}}>
+            <div className='product_desc' style={{ marginTop: '360px' }}>
               PRICE
             </div>
             <div className='product_prize_icons'>
               <img src={require('../../assets/prize_icon.png').default}
-                   className="product_content_detail_prize_icon"
-                   style={{marginLeft: '0px'}}/>
+                className="product_content_detail_prize_icon"
+                style={{ marginLeft: '0px', marginTop: 5 }} />
               <span className="product_content_detail_prize_words">{this.state.prize}</span>
               {/*<span className='product_prize_split'>/</span>*/}
               {/*<img src={require('../../assets/prize_eth_icon.png').default}*/}
@@ -92,7 +93,10 @@ class ProductDetail extends React.Component {
             {/*      <div className="buy_button_words">BUY</div>*/}
             {/*    </button>*/}
             {/*</a>:*/}
-              <BuyNFT/>
+            <div className="button_group">
+              <BuyNFT />
+              <Transfer />
+            </div>
             {/*}*/}
 
             <div className='product_photos'>
@@ -102,24 +106,24 @@ class ProductDetail extends React.Component {
                   <div className='product_history_words_content'>
                     {this.state.detail}
                   </div>
-                  <div className='line0'/>
-                  <img src={require('../../assets/story.svg').default} className='story_vector'/>
+                  <div className='line0' />
+                  <img src={require('../../assets/story.svg').default} className='story_vector' />
                 </div>
-                <img src={require('../../assets/' + this.state.imgPath).default} className='story_img'/>
+                <img src={require('../../assets/' + this.state.imgPath).default} className='story_img' />
               </div>
-              <div className="line1"/>
-              <div className="line2"/>
+              <div className="line1" />
+              <div className="line2" />
               <div className="product_details">Product Details</div>
               {/*<div className="product_detail_words">{this.state.detail}</div>*/}
               <div className="product_detail_photos">
-                {this.state.detailPath.map(item => (
-                  <img src={require('../../assets/' + item).default} style={{width: '100%'}}/>
+                {this.state.detailPath.map((item, i) => (
+                  <img key={i} src={require('../../assets/' + item).default} style={{ width: '100%' }} />
                 ))}
               </div>
             </div>
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
