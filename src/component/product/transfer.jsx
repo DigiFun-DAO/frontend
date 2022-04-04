@@ -3,90 +3,140 @@ import Backdrop from '@mui/material/Backdrop';
 import { useSmallLoading, useSwitch } from "../Loading"
 import { useWeb3React } from "@web3-react/core"
 import React, { useEffect, useState, useMemo } from "react"
-import { MANA_ABI } from '../../artifacts/contracts/manaAbi.js'
-import { Aggregator_ABI } from '../../artifacts/contracts/Aggregator.js'
+import { NFTContract_ABI } from '../../artifacts/contracts/NFTContract.js'
+import { TransferContract_ABI } from '../../artifacts/contracts/TransferContract'
 import Web3 from 'web3'
 import { useMessage } from "../Message"
-import { useApprove } from "../wallet/buyNFT"
 
-const manaAddress = "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4"
-const aggregatorAddress = "0xCEC5168cd1DFA9b5Fbe44fE8960E0acd22A57F52"
+const transferAddress = "0xbED2387034955B9B94528FCd1F65af0288ebbB74"
 
-export default function Transfer(props) {
+const platforms = [
+  { value: "dcl", label: "Decentraland", address: "0x9B0A93EA49955a5ef1878c1a1e8f8645d049e597" },
+  { value: "cv", label: "Cryptovoxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1" },
+  { value: "sb", label: "Sandbox", address: "" },
+]
+
+export const useApproveERC721 = (contract, owner, operator) => {
+  const [isApproved, setIsApproved] = useState(false);
+  const [isOpen, open, close] = useSwitch();
+  const { message } = useMessage();
+
+  useEffect(async () => {
+    if (!contract || !owner || !operator) return
+    open();
+    let res = await contract.methods.isApprovedForAll(owner, operator).call();
+    setIsApproved(res);
+    close();
+  }, [contract, owner, operator])
+
+  const approve = async () => {
+    open();
+    let timer;
+    await contract.methods
+      .setApprovalForAll(operator, true)
+      .send({ from: owner }, function (err) {
+        if (err) {
+          message("error", err?.message || "approve allowance failed");
+          close();
+          clearInterval(timer);
+        }
+      })
+
+    timer = setInterval(async () => {
+      let res = await contract.methods.isApprovedForAll(owner, operator).call();
+      if (res) {
+        message("success", "approve nft success!");
+        close();
+        setIsApproved(true);
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
+
+  return {
+    isApproved,
+    approve,
+    loadingApprove: isOpen
+  }
+}
+
+export default function Transfer() {
   const [{
-    name,
-    intro,
-    slogan,
-    stack,
+    to,
+    groupName,
+    fromPlatform,
+    toPlatform,
   }, setValue] = React.useState({
-    intro: "",
-    name: "",
-    slogan: "",
-    stack: ""
+    to: "",
+    groupName: "Ice Shadow",
+    fromPlatform: "",
+    toPlatform: ""
   })
   const { active, account } = useWeb3React()
   const { SmallLoading, loading, open: openLoading, close: closeLoading } = useSmallLoading();
-  const { isOpen, open: openModal, close: closeModal } = useSwitch();
+  const [isOpen, openModal, closeModal] = useSwitch();
   const { message } = useMessage();
 
-  const handleSubmit = async () => {
+  const w3 = new Web3(Web3.givenProvider)
+  const selectFromPlatform = useMemo(() => {
+    const platform = platforms.find(item => item?.value === fromPlatform);
+    return platform || {}
+  }, [fromPlatform])
 
-    if (name == '' || intro?.length <= 6 || intro === "<p><br></p>" || stack == '' || slogan == "") {
+  const nftContract = useMemo(() => {
+    if (!selectFromPlatform?.address) return
+    return new w3.eth.Contract(NFTContract_ABI, selectFromPlatform?.address)
+  }, [NFTContract_ABI, selectFromPlatform?.address]);
+
+  const transferContract = useMemo(() => new w3.eth.Contract(TransferContract_ABI, transferAddress), [TransferContract_ABI, transferAddress])
+  const { isApproved, approve, loadingApprove } = useApproveERC721(nftContract, account, transferAddress);
+
+  useEffect(() => {
+    if (loadingApprove) {
+      openLoading()
+    } else {
+      closeLoading()
+    }
+  }, [loadingApprove])
+
+  useEffect(() => {
+    if (account) {
+      setValue((pre) => ({ ...pre, to: account }))
+    }
+  }, [account])
+
+  const handleSubmit = async () => {
+    if (to == '' || groupName === "" || fromPlatform == '' || toPlatform == "") {
       message("warning", "Incomplete field filling!")
       return;
     }
+    if (!w3.utils.isAddress(to)) {
+      message("warning", "Address format error!")
+      return
+    }
     openLoading();
 
-    const data = {
-      name,
-      intro,
-      slogan,
-    }
-
-    if (nftState['isGroup'] === true) {
-      aggregator.methods
-        .buyNFTGroup(account, nftState['title'])
-        .send({ from: account }, function (err, res) {
-          finish();
-          if (err) {
-            message("error", "buy nft group failed");
-          }
-        })
-    } else {
-      aggregator.methods
-        .buyNFT(account, nftState['title'])
-        .send({ from: account }, function (err, res) {
-          finish();
-          if (err) {
-            message("error", "buy nft failed");
-          }
-        })
-    }
-  };
-
-  const finish = () => {
-    message("success", "Transfer Success!");
+    await transferContract.methods
+      .transferNFTGroup(to || account, groupName, fromPlatform, toPlatform)
+      .send({ from: account }, function (err) {
+        if (err) {
+          message("error", err?.message || "buy nft group failed");
+          closeLoading();
+        }
+      });
     closeLoading();
-    handleClose();
-  }
+    message("success", "Transfer Success!");
+  };
 
   const handleClose = () => {
-    setValue({
-      intro: "",
-      name: "",
-      slogan: "",
-      stack: ""
-    });
+    /* setValue({
+      to: "",
+      groupName: "",
+      fromPlatform: "",
+      toPlatform: ""
+    }); */
     closeModal();
   };
-
-  const strs = window.location.href.split('/')
-  const nftState = global.products.find(item => item.id == strs[strs.length - 1])
-  const w3 = new Web3(Web3.givenProvider)
-
-  const mana = useMemo(() => new w3.eth.Contract(MANA_ABI, manaAddress), [MANA_ABI, manaAddress])
-  const aggregator = useMemo(() => new w3.eth.Contract(Aggregator_ABI, aggregatorAddress), [Aggregator_ABI, aggregatorAddress])
-  const { isApproved, approve, loadingApprove } = useApprove(mana, account, aggregatorAddress, w3.utils.toWei('' + nftState['prize'], 'ether'))
 
   return (
     <div>
@@ -105,19 +155,20 @@ export default function Transfer(props) {
       >
         <CardBox title="Transfer NFT" css={{ width: 600, background: "white", maxHeight: "90vh" }}>
           <LabelBox title="To Address">
-            <Input maxLength={30} placeholder="Please enter 1111" type="name" value={name} setValue={setValue} />
+            <Input maxLength={100} placeholder="Please enter address" type="to" value={to} setValue={setValue} />
           </LabelBox>
-          <LabelBox title="2222">
-            <Input maxLength={100} placeholder="Please enter 2222" type="slogan" value={slogan} setValue={setValue} />
+          <LabelBox title="Group Name">
+            <Input maxLength={100} placeholder="Please enter group name" type="groupName" value={groupName} setValue={setValue} />
           </LabelBox>
-          <LabelBox title="3333">
-            <Input maxLength={100} placeholder="Please enter 33333" type="slogan" value={slogan} setValue={setValue} />
+          <LabelBox title="From Platform">
+            <Input maxLength={100} placeholder="Please select from platform" type="fromPlatform" value={fromPlatform} setValue={setValue} selectList={platforms} />
           </LabelBox>
-          <LabelBox title="4444">
-            <Input placeholder="Please enter 44444" type="stack" value={stack} setValue={setValue} />
+          <LabelBox title="To Platform">
+            <Input maxLength={100} placeholder="Please select to platform" type="toPlatform" value={toPlatform} setValue={setValue} selectList={platforms} />
           </LabelBox>
           <BtnGroup onOk={() => {
             if (!active) return message("warning", "Please Connect Wallet!")
+            if (!selectFromPlatform?.address) return message("warning", "Please Select Planfrom!")
             if (loading || loadingApprove) return
             if (isApproved) {
               handleSubmit();

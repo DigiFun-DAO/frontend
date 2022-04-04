@@ -1,4 +1,5 @@
 // 信息展示卡片
+import { useSwitch } from './Loading';
 import * as React from 'react';
 import { bgColorShallow, mainColor, textColor } from "../style"
 
@@ -38,15 +39,17 @@ export const BtnGroup = (props) => {
 }
 
 export const Input = (props) => {
-    const { width, placeholder, value, setValue, type, maxLength, disabled, inputType } = props;
+    const { width, placeholder, value, setValue, type, maxLength, disabled, inputType, selectList } = props;
+    const [isOpen, open, close] = useSwitch()
 
     return (
-        <div style={{ marginTop: 5, width: "100%" }}>
+        <div style={{ marginTop: 5, width: "100%", position: 'relative' }} onMouseDown={open} onMouseLeave={close}>
             <input
                 type={inputType || "text"}
                 placeholder={placeholder}
-                value={value}
+                value={selectList?.length > 0 && selectList.find(item=>item?.value === value) ? selectList.find(item=>item?.value === value)?.label : value}
                 onChange={(val) => {
+                    if (selectList?.length > 0) return
                     setValue((pre) => ({ ...pre, [type]: val.target.value }))
                 }}
                 disabled={disabled}
@@ -61,6 +64,34 @@ export const Input = (props) => {
                     outline: "none",
                 }}
             />
+            {selectList?.length > 0 && isOpen && <div
+                style={{
+                    position: "absolute",
+                    bottom: 40,
+                    left: 0,
+                    border: `1px solid ${mainColor}`,
+                    width: "100%",
+                    borderRadius: 5,
+                    maxHeight: 250,
+                    background: 'white',
+                    overflow: "auto"
+                }}>
+                {selectList?.map(item => {
+                    return (
+                        <div
+                            className='optionStyle'
+                            key={item?.value}
+                            onClick={() => {
+                                setValue((pre) => ({ ...pre, [type]: item?.value }));
+                                close()
+                            }}
+                            style={{
+                                color: mainColor,
+                            }}>{item?.label}</div>
+                    )
+                })}
+            </div>
+            }
         </div>
     );
 }

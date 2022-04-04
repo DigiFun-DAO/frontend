@@ -118,3 +118,12 @@ code {
   align-items: center;
   flex-wrap: wrap;
 }
+
+.optionStyle{
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.optionStyle:hover{
+  background-color: #F8F8F8;
+}

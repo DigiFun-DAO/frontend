@@ -52,7 +52,7 @@ export const LoadingCore = (props) => {
 }
 
 export const useSmallLoading = () => {
-    const { isOpen, open, close } = useSwitch()
+    const [isOpen, open, close] = useSwitch()
 
     const SmallLoading = (props) => {
         const { size, color = "#165DFF", children } = props;
@@ -105,13 +105,11 @@ export const useMessage = () => {
 
 export const useSwitch = () => {
     const [isOpen, setRequesting] = React.useState(false)
-    return {
-        isOpen,
-        open: () => {
-            setRequesting(true)
-        },
-        close: () => {
-            setRequesting(false)
-        }
-    }
+    const open = () => {
+        setRequesting(true)
+    };
+    const close = () => {
+        setRequesting(false)
+    };
+    return [isOpen, open, close]
 }

@@ -6,11 +6,21 @@ import { Aggregator_ABI } from '../../artifacts/contracts/Aggregator.js'
 import Web3 from 'web3'
 import { useSmallLoading, useSwitch } from "../Loading"
 import { useMessage } from "../Message"
+import Notify from "bnc-notify";
 const toBN = Web3.utils.toBN;
 
-export const useApprove = (contract, account, spender, needApproveAmount) => {
+export const BLOCKNATIVE_DAPPID = "c5a2921b-d638-45fe-a245-5387e8083d0d"
+const options = {
+  dappId: BLOCKNATIVE_DAPPID,
+  networkId: 137
+}
+
+// initialize notify
+const notify = Notify(options)
+
+export const useApproveERC20 = (contract, account, spender, needApproveAmount) => {
   const [isApproved, setIsApproved] = useState(false);
-  const { isOpen, open, close } = useSwitch();
+  const [isOpen, open, close] = useSwitch();
   const { message } = useMessage();
   const w3 = new Web3(Web3.givenProvider);
 
@@ -35,9 +45,22 @@ export const useApprove = (contract, account, spender, needApproveAmount) => {
           close();
           clearInterval(timer);
         }
-      });
+      }).on('transactionHash', hash => {
+        // 这种每天只有1000次免费监听， https://www.blocknative.com/pricing 价格表
+        // pass the hash to notify.hash function for transaction updates and notifications
+        const { emitter } = notify.hash(hash)
 
-    timer = setInterval(async () => {
+        // use emitter to listen to transaction events
+        emitter.on('txSent', console.log)
+        emitter.on('txPool', console.log)
+        emitter.on('txConfirmed', close);
+        emitter.on('txSpeedUp', console.log)
+        emitter.on('txCancel', console.log)
+        emitter.on('txFailed', console.log)
+        emitter.on('all', console.log)
+      })
+
+    /* timer = setInterval(async () => {
       let allowance = await contract.methods.allowance(account, spender).call();
       if (toBN(allowance).gte(toBN(needApproveAmount))) {
         message("success", "approve allowance success!");
@@ -45,7 +68,7 @@ export const useApprove = (contract, account, spender, needApproveAmount) => {
         setIsApproved(true)
         clearInterval(timer);
       }
-    }, 1000);
+    }, 1000); */
   }
 
   return {
@@ -70,7 +93,7 @@ export default function BuyNFT() {
   const aggregator = useMemo(() => new w3.eth.Contract(Aggregator_ABI, aggregatorAddress), [Aggregator_ABI, aggregatorAddress])
   const { SmallLoading, open, close, loading } = useSmallLoading();
   const { message } = useMessage();
-  const { isApproved, approve, loadingApprove } = useApprove(mana, account, aggregatorAddress, w3.utils.toWei('' + nftState['prize'], 'ether'))
+  const { isApproved, approve, loadingApprove } = useApproveERC20(mana, account, aggregatorAddress, w3.utils.toWei('' + nftState['prize'], 'ether'))
 
   useEffect(() => {
     if (loadingApprove) {
@@ -153,7 +176,7 @@ export default function BuyNFT() {
         button_selected = false
       }}
       onClick={() => {
-        if(!active) return message("warning", "Please Connect Wallet!")
+        if (!active) return message("warning", "Please Connect Wallet!")
         if (loading || loadingApprove) return
         if (isApproved) {
           buy()
