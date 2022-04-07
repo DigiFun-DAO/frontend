@@ -27,7 +27,8 @@ export const BtnGroup = (props) => {
                         color: "white",
                         cursor: "pointer",
                         marginLeft: 30,
-                        width: 80
+                        width: 80,
+                        height: 34
                     }}
                     onClick={onOk}
                 ><SmallLoading size={22} color={"white"} >
@@ -47,7 +48,7 @@ export const Input = (props) => {
             <input
                 type={inputType || "text"}
                 placeholder={placeholder}
-                value={selectList?.length > 0 && selectList.find(item=>item?.value === value) ? selectList.find(item=>item?.value === value)?.label : value}
+                value={selectList?.length > 0 && selectList.find(item => item?.value === value) ? selectList.find(item => item?.value === value)?.label : value}
                 onChange={(val) => {
                     if (selectList?.length > 0) return
                     setValue((pre) => ({ ...pre, [type]: val.target.value }))
@@ -64,18 +65,19 @@ export const Input = (props) => {
                     outline: "none",
                 }}
             />
-            {selectList?.length > 0 && isOpen && <div
-                style={{
-                    position: "absolute",
-                    bottom: 40,
-                    left: 0,
-                    border: `1px solid ${mainColor}`,
-                    width: "100%",
-                    borderRadius: 5,
-                    maxHeight: 250,
-                    background: 'white',
-                    overflow: "auto"
-                }}>
+            {<div style={{
+                display: isOpen && selectList?.length > 0 ? "block" : "none",
+                position: "absolute",
+                bottom: 40,
+                left: 0,
+                border: `1px solid ${mainColor}`,
+                width: "100%",
+                borderRadius: 5,
+                maxHeight: 250,
+                background: 'white',
+                overflow: "auto",
+                transition: "all 5s linear 2s"
+            }}>
                 {selectList?.map(item => {
                     return (
                         <div

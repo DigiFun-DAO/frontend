@@ -1,132 +1,164 @@
-import React from "react"
+import React, { useMemo, useState } from "react"
 import './product.css'
 import '../../App.css'
 import './productContent'
 import BuyNFT from "../wallet/buyNFT";
 import Transfer from "./transfer";
 import Footer from "../footer";
+import { platforms, products } from "./productContent"
+import { mainColor } from "../../style";
 
-class ProductDetail extends React.Component {
+export const ProductsLabel = (props) => {
+  const { title, children } = props;
+  return (
+    <div style={{ display: "flex" }}>
+      <div className="products-label-title">{title}</div>
+      <div style={{ flex: 1, color: "#121127", fontWeight: 600, fontSize: 18 }}>{children}</div>
+    </div>
+  )
+}
 
+const ProductDetail = () => {
+  const strs = window.location.href.split('/');
+  const state = products?.find(item => item.id == strs[strs.length - 1]);
+  const [platform_selected_idx, setSelect] = useState(0);
+  const [idxs, setSelectIdxs] = useState([]);
+  const img = useMemo(() => {
+    if (idxs?.length > 0) return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/${state.parts[idxs[idxs?.length - 1]]?.label}.png`).default
+    return require(`../../assets/products/${state?.img}/${state?.img}.jpg`).default
+  }, [idxs, state])
 
-  constructor(props, context) {
-    super(props, context)
-    const strs = window.location.href.split('/')
-    this.state = global.products.find(item => item.id == strs[strs.length - 1])
-    this.state.button_selected = false
-    this.state.platform_selected_idx = 0
-    this.state.platforms = ['DECENTRALAND']
-  }
-
-  render() {
-    return (
-      <div>
-        {/*<Header/>*/}
-        <div className='product_item_frame'>
-          <div className='product_item_frame_absolute'>
-            <div className={this.state.cssDetail}>
-              <img src={require('../../assets/' + this.state.imgPath).default} style={{ width: this.state.width }} />
-            </div>
-            <div className='product_item_photo_title'>{this.state.title}</div>
+  return (
+    <div>
+      {/*<Header/>*/}
+      <div className='product_item_frame'>
+        <div className='product_item_frame_absolute'>
+          <div className={state.cssDetail} style={{ background: "#944fdc" }}>
+            <img src={img} style={{ width: "100%", maxHeight: "100%" }} />
+          </div>
+          <div className="product_item">
+            <div className='product_item_photo_title'>{state.title}</div>
             <div className='product_item_icons'>
-              <img src={require('../../assets/' + this.state.class).default}
+              <img src={require('../../assets/' + state.class).default}
                 className="product_item_icon1" />
-              <img src={require('../../assets/' + this.state.sex).default}
+              &nbsp;
+              <img src={require('../../assets/' + state.sex).default}
                 className="product_item_icon2" />
             </div>
-            <div className='product_desc' style={{ marginTop: '140px' }}>
-              DESCRIPTION
-            </div>
-            <div className='product_words' style={{ marginTop: '140px' }}>
-              {this.state.desc}
-            </div>
-            <div className='product_desc' style={{ marginTop: '230px' }}>
-              NETWORK
-            </div>
-            <div className='product_words' style={{ marginTop: '230px' }}>
-              {this.state.source}
-            </div>
-            <div className='product_desc' style={{ marginTop: '295px' }}>
-              PLATFORM
-            </div>
-            {
-              this.state.platforms.map((item, index) => {
-                const leftPos = 600 + 160 * index
-                return (
-                  <div key={index} className={index === this.state.platform_selected_idx ?
-                    'product_platform_selected' : 'product_platform'}
-                    style={{ marginTop: '290px', marginLeft: leftPos + 'px' }}
-                    onClick={() => {
-                      this.setState({ platform_selected_idx: index })
-                    }}
-                  >
-                    {item}
-                  </div>
-                )
-              }
-              )
-            }
-            <div className='product_desc' style={{ marginTop: '360px' }}>
-              PRICE
-            </div>
-            <div className='product_prize_icons'>
-              <img src={require('../../assets/prize_icon.png').default}
-                className="product_content_detail_prize_icon"
-                style={{ marginLeft: '0px', marginTop: 5 }} />
-              <span className="product_content_detail_prize_words">{this.state.prize}</span>
-              {/*<span className='product_prize_split'>/</span>*/}
-              {/*<img src={require('../../assets/prize_eth_icon.png').default}*/}
-              {/*     className="product_content_detail_prize_icon"*/}
-              {/*     style={{marginLeft: '38px'}}/>*/}
-              {/*<span className="product_content_detail_prize_words_eth">{this.state.prize_eth}</span>*/}
-            </div>
-            {/*{this.state.platform_selected_idx === 0 ?*/}
-            {/*  <a href={this.state.url}>*/}
-            {/*    <button className={this.state.button_selected === true ? "buy_button_selected" : "buy_button_empty"}*/}
-            {/*            style={{cursor: 'pointer'}}*/}
-            {/*            onMouseEnter={() => {*/}
-            {/*              this.setState({button_selected: true})*/}
-            {/*            }}*/}
-            {/*            onMouseLeave={() => {*/}
-            {/*              this.setState({button_selected: false})*/}
-            {/*            }}>*/}
-            {/*      <div className="buy_button_words">BUY</div>*/}
-            {/*    </button>*/}
-            {/*</a>:*/}
-            <div className="button_group">
-              <BuyNFT />
-              <Transfer />
-            </div>
-            {/*}*/}
-
-            <div className='product_photos'>
-              <div className="product_history_frame">
-                <div className='product_history_words'>
-                  <div className='product_history_words_title'>Product Story</div>
-                  <div className='product_history_words_content'>
-                    {this.state.detail}
-                  </div>
-                  <div className='line0' />
-                  <img src={require('../../assets/story.svg').default} className='story_vector' />
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around", height: 325, width: 590 }}>
+              <ProductsLabel title="DESCRIPTION">{state.desc}</ProductsLabel>
+              <ProductsLabel title="NETWORK">{state.source}</ProductsLabel>
+              <ProductsLabel title="PLATFORM">
+                <div style={{ display: "flex", flexWrap: "wrap" }}>
+                  {platforms.map((item, index) => {
+                    const isSelect = index === platform_selected_idx;
+                    return (
+                      <div
+                        key={index}
+                        style={{
+                          border: `1px solid ${isSelect ? mainColor : "rgba(18, 17, 39, 0.56)"}`,
+                          color: isSelect ? mainColor : "rgba(18, 17, 39, 0.56)",
+                          padding: "5px 10px",
+                          borderRadius: 5,
+                          marginRight: 10,
+                          cursor: isSelect ? "default" : "pointer",
+                          fontWeight: 600
+                        }}
+                        onClick={() => {
+                          setSelect(index);
+                          if (index !== platform_selected_idx) setSelectIdxs([]);
+                        }}
+                      >
+                        {item?.label}
+                      </div>
+                    )
+                  })}
                 </div>
-                <img src={require('../../assets/' + this.state.imgPath).default} className='story_img' />
+              </ProductsLabel>
+              <ProductsLabel title="CATEGORY">
+                <div style={{ display: "flex", flexWrap: "wrap", height: 100, overflow: "auto", justifyContent: "flex-start" }}>
+                  {state.parts.map((item, index) => {
+                    const isSelect = idxs?.includes(index);
+                    const isShow = item?.platform === platforms[platform_selected_idx]?.value
+                    if (!isShow) return null
+
+                    return (
+                      <div
+                        key={index}
+                        style={{
+                          border: `1px solid ${isSelect ? mainColor : "rgba(18, 17, 39, 0.56)"}`,
+                          color: isSelect ? mainColor : "rgba(18, 17, 39, 0.56)",
+                          padding: "0px 12px",
+                          lineHeight: "24px",
+                          height: 24,
+                          borderRadius: 24,
+                          margin: "0 3px 3px 0",
+                          cursor: "pointer",
+                          fontSize: 14
+                        }}
+                        onClick={() => {
+                          if (isSelect) {
+                            setSelectIdxs((pre) => {
+                              const data = [...pre];
+                              const i = data?.indexOf(index);
+                              data.splice(i, 1);
+                              return data
+                            })
+                          } else {
+                            setSelectIdxs((pre) => ([...pre, index]))
+                          }
+                        }}
+                      >
+                        {item?.label?.split("-")?.join(" ")}
+                      </div>
+                    )
+                  })}
+                </div>
+              </ProductsLabel>
+              <ProductsLabel title="PRICE">
+                <div className="flex-between" style={{ marginTop: -5 }}>
+                  <div className='product_prize_icons'>
+                    <img src={require('../../assets/prize_icon.png').default}
+                      className="product_content_detail_prize_icon"
+                      style={{ marginLeft: '0px', marginTop: 5 }} />
+                    <span className="product_content_detail_prize_words">{idxs?.reduce((pre, next) => state?.parts[next]?.price + pre, 0)}</span>
+                  </div>
+                  <div className="button_group">
+                    <BuyNFT ERC20={platforms[platform_selected_idx]?.ERC20} nids={idxs?.map(item=>state?.parts[item]?.nid)}/>
+                    <Transfer groupName={state?.title}/>
+                  </div>
+                </div>
+              </ProductsLabel>
+            </div>
+          </div>
+
+          {/* 详情 */}
+          <div className='product_photos'>
+            <div className="product_history_frame">
+              <div className='product_history_words'>
+                <div className='product_history_words_title'>Product Story</div>
+                <div className='product_history_words_content'>
+                  {state.detail}
+                </div>
+                <div className='line0' />
+                <img src={require('../../assets/story.svg').default} className='story_vector' />
               </div>
-              <div className="line1" />
-              <div className="line2" />
-              <div className="product_details">Product Details</div>
-              {/*<div className="product_detail_words">{this.state.detail}</div>*/}
-              <div className="product_detail_photos">
-                {this.state.detailPath.map((item, i) => (
-                  <img key={i} src={require('../../assets/' + item).default} style={{ width: '100%' }} />
-                ))}
-              </div>
+              <img src={require('../../assets/' + state.imgPath).default} className='story_img' />
+            </div>
+            <div className="line1" />
+            <div className="line2" />
+            <div className="product_details">Product Details</div>
+            <div className="product_detail_photos">
+              {state.detailPath.map((item, i) => (
+                <img key={i} src={require('../../assets/' + item).default} style={{ width: '100%' }} />
+              ))}
             </div>
           </div>
         </div>
-        <Footer />
       </div>
-    );
-  }
+      <Footer />
+    </div>
+  );
 }
 
 export default ProductDetail;

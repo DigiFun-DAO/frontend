@@ -1,11 +1,30 @@
 import React from "react";
 import './product.css';
-import '../../App.css'
-import Header from "../header";
+import '../../App.css';
 import Footer from "../footer";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-global.products = [
+//export const aggregatorAddress = "0xCEC5168cd1DFA9b5Fbe44fE8960E0acd22A57F52"
+export const aggregatorAddress = "0xE1Cf0dDAAF53e79d0126a377981482D39D799f6E"
+export const MANA = "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4";
+export const DAI = "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063";
+
+//test
+export const USDT = "0x308a6B4974264Ddc9e1a51C32A081a8ec507b675";
+//export const USDT = "0x308a6B4974264Ddc9e1a51C32A081a8ec507b675";
+
+export const PLATFORMS_ENUM = {
+  DCL: "dcl",
+  CV: "cv",
+}
+
+export const platforms = [
+  { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x9B0A93EA49955a5ef1878c1a1e8f8645d049e597", ERC20: USDT, ERC20Symbol: "USDT" },
+  { value: PLATFORMS_ENUM.CV, label: "Cryptovoxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
+  //{ value: "sb", label: "Sandbox", address: "", ERC20: "" },
+]
+
+/* global.products = [
   {
     id: 0,
     isGroup: false,
@@ -132,11 +151,88 @@ global.products = [
     cssDetail: "product_item_photo_normal",
     detail: "Ice Shadow was born with super abilities, his parents have mutated with a bat, causing it to have some human sized mat black wings, being able to fly as fast as speed of light. But because he was born in a super ice research laboratory, he is able to manipulate ice and cold by freezing all the water around him, this ability is mainly to maintain his body temperature as he can´t survive in normal temperature conditions. Because he needs to be living in extremely cold temperatures, he wants to convert our meta world into a freeze planet that’s why everyone also knows him as the devil of ice. "
   }
-]
+] */
 
+export const products = [
+  {
+    id: 0,
+    isGroup: true,
+    img: "damoying",
+    imgPath: "product7.png",
+    detailPath: ["product6_detail1.png", "product6_detail2.png", "product6_detail3.png", "product6_detail4.png", "product6_detail5.png"],
+    title: "Ice Shadow",
+    url: "https://market.decentraland.org/contracts/0x9b0a93ea49955a5ef1878c1a1e8f8645d049e597/items/1",
+    source: "Polygon",
+    prize: 19,
+    prize_eth: 2,
+    parts: [{
+      label: "helmet",
+      price: 9,
+      nid: 0,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "upper-body",
+      price: 10,
+      nid: 1,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "head",
+      price: 2,
+      nid: 10,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "chest",
+      price: 2,
+      nid: 11,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-left-wing",
+      price: 2,
+      nid: 12,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-left-wing",
+      price: 2,
+      nid: 13,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-right-wing",
+      price: 2,
+      nid: 14,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-right-wing",
+      price: 2,
+      nid: 15,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "leg",
+      price: 2,
+      nid: 16,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-base",
+      price: 2,
+      nid: 17,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-base",
+      price: 2,
+      nid: 18,
+      platform: PLATFORMS_ENUM.CV
+    }],
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "A cloak and body supported by ice",
+    width: "50%",
+    css: "product_content_img_frame_normal",
+    cssDetail: "product_item_photo",
+    detail: "Ice Shadow was born with super abilities, his parents have mutated with a bat, causing it to have some human sized mat black wings, being able to fly as fast as speed of light. But because he was born in a super ice research laboratory, he is able to manipulate ice and cold by freezing all the water around him, this ability is mainly to maintain his body temperature as he can´t survive in normal temperature conditions. Because he needs to be living in extremely cold temperatures, he wants to convert our meta world into a freeze planet that’s why everyone also knows him as the devil of ice. "
+  }
+]
 class ProductContentList extends React.Component {
   routerTo(v) {
-    this.props.navigate(`/product/detail/${v.id}`, {state: v})
+    this.props.navigate(`/product/detail/${v.id}`, { state: v })
   }
 
   render() {
@@ -151,22 +247,22 @@ class ProductContentList extends React.Component {
             </div>
           </div>
           <div className="product_card_frame">
-            {global.products.map((item, idx) => (
-              <div onClick={() => this.routerTo(item)}>
+            {products?.map((item, idx) => (
+              <div key={idx} onClick={() => this.routerTo(item)}>
                 <div className="product_card">
                   <div className={item.css}>
-                    <img src={require('../../assets/' + item.imgPath).default} width={item.width}/>
+                    <img src={require('../../assets/' + item.imgPath).default} width={item.width} />
                   </div>
                   <div className="product_content_detail_comments">
                     <div className="product_content_detail_comments_intro">
                       <div className="product_content_detail_comments_intro_title">{item.title}</div>
                       <div className="product_content_detail_comments_intro_source">{item.source}</div>
                       <img src={require('../../assets/' + item.class).default}
-                           className="product_content_detail_comments_intro_class"/>
+                        className="product_content_detail_comments_intro_class" />
                       <img src={require('../../assets/' + item.sex).default}
-                           className="product_content_detail_comments_intro_sex"/>
+                        className="product_content_detail_comments_intro_sex" />
                       <img src={require('../../assets/prize_icon.png').default}
-                           className="product_content_detail_prize_icon"/>
+                        className="product_content_detail_prize_icon" />
                       <span className="product_content_detail_prize_words">{item.prize}</span>
                     </div>
                   </div>
@@ -176,7 +272,7 @@ class ProductContentList extends React.Component {
           </div>
         </div>
 
-        <Footer/>
+        <Footer />
       </div>
     );
   }
@@ -184,7 +280,7 @@ class ProductContentList extends React.Component {
 
 function ProductContent(props) {
   let navigate = useNavigate();
-  return <ProductContentList {...props} navigate={navigate}/>
+  return <ProductContentList {...props} navigate={navigate} />
 }
 
 export default ProductContent;

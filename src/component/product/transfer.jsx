@@ -7,14 +7,9 @@ import { NFTContract_ABI } from '../../artifacts/contracts/NFTContract.js'
 import { TransferContract_ABI } from '../../artifacts/contracts/TransferContract'
 import Web3 from 'web3'
 import { useMessage } from "../Message"
+import { platforms } from "./productContent"
 
 const transferAddress = "0xbED2387034955B9B94528FCd1F65af0288ebbB74"
-
-const platforms = [
-  { value: "dcl", label: "Decentraland", address: "0x9B0A93EA49955a5ef1878c1a1e8f8645d049e597" },
-  { value: "cv", label: "Cryptovoxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1" },
-  { value: "sb", label: "Sandbox", address: "" },
-]
 
 export const useApproveERC721 = (contract, owner, operator) => {
   const [isApproved, setIsApproved] = useState(false);
@@ -60,7 +55,7 @@ export const useApproveERC721 = (contract, owner, operator) => {
   }
 }
 
-export default function Transfer() {
+export default function Transfer(props) {
   const [{
     to,
     groupName,
@@ -68,7 +63,7 @@ export default function Transfer() {
     toPlatform,
   }, setValue] = React.useState({
     to: "",
-    groupName: "Ice Shadow",
+    groupName: props?.groupName || "",
     fromPlatform: "",
     toPlatform: ""
   })
@@ -100,9 +95,7 @@ export default function Transfer() {
   }, [loadingApprove])
 
   useEffect(() => {
-    if (account) {
-      setValue((pre) => ({ ...pre, to: account }))
-    }
+    setValue((pre) => ({ ...pre, to: account || "" }));
   }, [account])
 
   const handleSubmit = async () => {
@@ -116,8 +109,9 @@ export default function Transfer() {
     }
     openLoading();
 
+    console.log(to, groupName, fromPlatform, toPlatform)
     await transferContract.methods
-      .transferNFTGroup(to || account, groupName, fromPlatform, toPlatform)
+      .transferNFTGroup(to, groupName, fromPlatform, toPlatform)
       .send({ from: account }, function (err) {
         if (err) {
           message("error", err?.message || "buy nft group failed");
@@ -153,7 +147,7 @@ export default function Transfer() {
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={isOpen}
       >
-        <CardBox title="Transfer NFT" css={{ width: 600, background: "white", maxHeight: "90vh" }}>
+        <CardBox title="Cross Platform Transfer" css={{ width: 600, background: "white", maxHeight: "90vh" }}>
           <LabelBox title="To Address">
             <Input maxLength={100} placeholder="Please enter address" type="to" value={to} setValue={setValue} />
           </LabelBox>

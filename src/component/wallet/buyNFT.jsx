@@ -7,6 +7,8 @@ import Web3 from 'web3'
 import { useSmallLoading, useSwitch } from "../Loading"
 import { useMessage } from "../Message"
 import Notify from "bnc-notify";
+import { aggregatorAddress, products } from "../product/productContent"
+
 const toBN = Web3.utils.toBN;
 
 export const BLOCKNATIVE_DAPPID = "c5a2921b-d638-45fe-a245-5387e8083d0d"
@@ -30,6 +32,8 @@ export const useApproveERC20 = (contract, account, spender, needApproveAmount) =
     let allowance = await contract.methods.allowance(account, spender).call();
     if (toBN(allowance).gte(toBN(needApproveAmount))) {
       setIsApproved(true)
+    } else {
+      setIsApproved(false)
     }
     close();
   }, [contract, account, spender, needApproveAmount])
@@ -48,7 +52,7 @@ export const useApproveERC20 = (contract, account, spender, needApproveAmount) =
       }).on('transactionHash', hash => {
         // 这种每天只有1000次免费监听， https://www.blocknative.com/pricing 价格表
         // pass the hash to notify.hash function for transaction updates and notifications
-        const { emitter } = notify.hash(hash)
+        /* const { emitter } = notify.hash(hash)
 
         // use emitter to listen to transaction events
         emitter.on('txSent', console.log)
@@ -57,18 +61,19 @@ export const useApproveERC20 = (contract, account, spender, needApproveAmount) =
         emitter.on('txSpeedUp', console.log)
         emitter.on('txCancel', console.log)
         emitter.on('txFailed', console.log)
-        emitter.on('all', console.log)
+        emitter.on('all', console.log) */
       })
 
-    /* timer = setInterval(async () => {
+    timer = setInterval(async () => {
       let allowance = await contract.methods.allowance(account, spender).call();
+      console.log(allowance)
       if (toBN(allowance).gte(toBN(needApproveAmount))) {
         message("success", "approve allowance success!");
         close();
         setIsApproved(true)
         clearInterval(timer);
       }
-    }, 1000); */
+    }, 1000);
   }
 
   return {
@@ -78,18 +83,15 @@ export const useApproveERC20 = (contract, account, spender, needApproveAmount) =
   }
 }
 
-const manaAddress = "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4"
-const aggregatorAddress = "0xCEC5168cd1DFA9b5Fbe44fE8960E0acd22A57F52"
-
-export default function BuyNFT() {
+export default function BuyNFT(props) {
 
   const strs = window.location.href.split('/')
-  const nftState = global.products.find(item => item.id == strs[strs.length - 1])
+  const nftState = products?.find(item => item.id == strs[strs.length - 1])
 
   const { active, account, library, connector, activate, deactivate } = useWeb3React()
   const w3 = new Web3(Web3.givenProvider)
 
-  const mana = useMemo(() => new w3.eth.Contract(MANA_ABI, manaAddress), [MANA_ABI, manaAddress])
+  const mana = useMemo(() => props.ERC20 ? new w3.eth.Contract(MANA_ABI, props.ERC20) : null, [MANA_ABI, props.ERC20])
   const aggregator = useMemo(() => new w3.eth.Contract(Aggregator_ABI, aggregatorAddress), [Aggregator_ABI, aggregatorAddress])
   const { SmallLoading, open, close, loading } = useSmallLoading();
   const { message } = useMessage();
@@ -106,28 +108,8 @@ export default function BuyNFT() {
   let button_selected = false
 
   async function buy() {
-    /* if (nftState['isGroup'] === true) {
-      aggregator.methods
-        .buyNFTGroup(account, nftState['title'])
-        .send({ from: account }, function (err, res) {
-          if (err) {
-            message("error", "buy failed");
-            close();
-          }
-        })
-    } else {
-      aggregator.methods
-        .buyNFT(account, nftState['title'])
-        .send({ from: account }, function (err, res) {
-          if (err) {
-            message("error", "buy failed");
-            close();
-          }
-        })
-    } */
-
     open();
-    await aggregator.methods[nftState['isGroup'] ? "buyNFTGroup" : "buyNFT"](account, nftState['title'])
+    await aggregator.methods.buyNFTs(account, props?.nids, props?.nids?.map(() => 1))
       .send({ from: account }, function (err) {
         if (err) {
           message("error", err?.message || "buy failed");
@@ -177,6 +159,7 @@ export default function BuyNFT() {
       }}
       onClick={() => {
         if (!active) return message("warning", "Please Connect Wallet!")
+        if (props?.nids?.length === 0) return message("warning", "Please Select NFT!")
         if (loading || loadingApprove) return
         if (isApproved) {
           buy()

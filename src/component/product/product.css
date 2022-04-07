@@ -297,11 +297,15 @@
     border-radius: 12px;
 }
 
-.product_item_photo_title {
+.product_item {
     position: absolute;
     width: 363px;
+    left: 450px;
+}
+
+.product_item_photo_title {
+    width: 363px;
     height: 76px;
-    left: 460px;
 
     font-family: Poppins-Bold;
     font-style: normal;
@@ -316,32 +320,23 @@
 }
 
 .product_item_icons {
-    position: absolute;
     width: 72px;
     height: 32px;
-    left: 460px;
-    top: 80px;
 }
 
 .product_item_icon1 {
-    position: absolute;
     width: 32px;
     height: 32px;
 }
 
 .product_item_icon2 {
-    position: absolute;
     width: 32px;
     height: 32px;
-    left: 40px;
 }
 
-.product_desc {
-    position: absolute;
-    width: 114px;
+.products-label-title {
+    width: 130px;
     height: 25px;
-    left: 460px;
-
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
@@ -353,10 +348,8 @@
 }
 
 .product_words {
-    position: absolute;
     width: 450px;
     height: 28px;
-    left: 600px;
 
     font-family: Poppins;
     font-style: normal;
@@ -416,15 +409,11 @@
 
 
 .product_prize_icons {
-    position: absolute;
     width: 161px;
     height: 45px;
-    left: 600px;
-    top: 353px;
 }
 
 .product_prize_split {
-    position: absolute;
     left: 80px;
     top: 5px;
 
@@ -438,9 +427,6 @@
 }
 
 .button_group{
-    position: absolute;
-    right: 0px;
-    top: 353px;
     display: flex;
     flex-direction: row;
     justify-content:flex-end;
