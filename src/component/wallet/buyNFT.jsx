@@ -11,14 +11,13 @@ import { aggregatorAddress, products } from "../product/productContent"
 
 const toBN = Web3.utils.toBN;
 
-export const BLOCKNATIVE_DAPPID = "c5a2921b-d638-45fe-a245-5387e8083d0d"
+/* export const BLOCKNATIVE_DAPPID = "c5a2921b-d638-45fe-a245-5387e8083d0d"
 const options = {
   dappId: BLOCKNATIVE_DAPPID,
   networkId: 137
 }
-
 // initialize notify
-const notify = Notify(options)
+const notify = Notify(options) */
 
 export const useApproveERC20 = (contract, account, spender, needApproveAmount) => {
   const [isApproved, setIsApproved] = useState(false);

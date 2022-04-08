@@ -25,8 +25,9 @@ const ProductDetail = () => {
   const [idxs, setSelectIdxs] = useState([]);
   const img = useMemo(() => {
     if (idxs?.length > 0) return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/${state.parts[idxs[idxs?.length - 1]]?.label}.png`).default
-    return require(`../../assets/products/${state?.img}/${state?.img}.jpg`).default
-  }, [idxs, state])
+    if (platform_selected_idx === 1) return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/all2.png`).default
+    return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/all.png`).default
+}, [idxs, state])
 
   return (
     <div>
@@ -123,10 +124,10 @@ const ProductDetail = () => {
                       style={{ marginLeft: '0px', marginTop: 5 }} />
                     <span className="product_content_detail_prize_words">{idxs?.reduce((pre, next) => state?.parts[next]?.price + pre, 0)}</span>
                   </div>
-                  <div className="button_group">
+                  { state?.id === 0 && <div className="button_group">
                     <BuyNFT ERC20={platforms[platform_selected_idx]?.ERC20} nids={idxs?.map(item=>state?.parts[item]?.nid)}/>
                     <Transfer groupName={state?.title}/>
-                  </div>
+                  </div> }
                 </div>
               </ProductsLabel>
             </div>
@@ -143,7 +144,7 @@ const ProductDetail = () => {
                 <div className='line0' />
                 <img src={require('../../assets/story.svg').default} className='story_vector' />
               </div>
-              <img src={require('../../assets/' + state.imgPath).default} className='story_img' />
+              <img src={require(`../../assets/products/${state.img}/parts/dcl/all.png` ).default} className='story_img' />
             </div>
             <div className="line1" />
             <div className="line2" />

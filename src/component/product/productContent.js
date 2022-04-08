@@ -217,7 +217,7 @@ export const products = [
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "left-base",
-      price: 2,
+      price: 3,
       nid: 18,
       platform: PLATFORMS_ENUM.CV
     }],
@@ -228,7 +228,157 @@ export const products = [
     css: "product_content_img_frame_normal",
     cssDetail: "product_item_photo",
     detail: "Ice Shadow was born with super abilities, his parents have mutated with a bat, causing it to have some human sized mat black wings, being able to fly as fast as speed of light. But because he was born in a super ice research laboratory, he is able to manipulate ice and cold by freezing all the water around him, this ability is mainly to maintain his body temperature as he can´t survive in normal temperature conditions. Because he needs to be living in extremely cold temperatures, he wants to convert our meta world into a freeze planet that’s why everyone also knows him as the devil of ice. "
-  }
+  },
+  {
+    id: 1,
+    isGroup: true,
+    img: "snowman2",
+    imgPath: "product1.png",
+    detailPath: ["product1_detail1.png", "product1_detail2.png", "product1_detail3.png", "product1_detail4.png", "product1_detail5.png"],
+    title: "Evil Snowman",
+    url: "https://market.decentraland.org/contracts/0x622a009f894bf7c6ba069a31217be23f327e95de/items/0",
+    source: "Polygon",
+    prize: 25,
+    parts: [{
+      label: "head",
+      price: 9,
+      nid: 0,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "upper-body",
+      price: 10,
+      nid: 1,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "head",
+      price: 2,
+      nid: 10,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-body",
+      price: 2,
+      nid: 11,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-body",
+      price: 2,
+      nid: 12,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-hand",
+      price: 2,
+      nid: 13,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-hand",
+      price: 2,
+      nid: 14,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-foot",
+      price: 2,
+      nid: 15,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-foot",
+      price: 2,
+      nid: 16,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-tail",
+      price: 2,
+      nid: 17,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-tail",
+      price: 3,
+      nid: 18,
+      platform: PLATFORMS_ENUM.CV
+    }],
+    prize_eth: 2,
+    class: "class_head.png",
+    sex: "sex_all.svg",
+    desc: "The Evil Snowman's head colour is dominated by scarlet red and silver gray, punctuated by dark gray glowing eyes.",
+    width: "50%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "Evil snowman is a funny and scary guy, it attracts you with its round body and lovely appearance, but it may bite off your head when you are not paying attention to it. Evil snowman was born on a dim night just right after Halloween night. He was woken up by the kids' noises while going trick or treating. But kids have noticed that he is a funny and at the same time a scary guy by its appearance. With it´s rounded shape, no one thinks he's scary at all, however, we all need to be careful because he will bite poeple's head when they are not paying attention to it."
+  },
+  {
+    id: 2,
+    isGroup: true,
+    img: "renzhe",
+    imgPath: "product3.png",
+    detailPath: ["product3_detail1.png", "product3_detail2.png", "product3_detail3.png", "product3_detail4.png", "product3_detail5.png"],
+    title: "R·G YEARning",
+    url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
+    source: "Polygon",
+    prize: 50,
+    parts: [{
+      label: "upper-body",
+      price: 9,
+      nid: 0,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "lower-body",
+      price: 10,
+      nid: 1,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "head",
+      price: 2,
+      nid: 10,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "body",
+      price: 2,
+      nid: 11,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "belt",
+      price: 2,
+      nid: 12,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-hand",
+      price: 2,
+      nid: 13,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-hand",
+      price: 2,
+      nid: 14,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-leg",
+      price: 2,
+      nid: 15,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-leg",
+      price: 2,
+      nid: 16,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-foot",
+      price: 2,
+      nid: 17,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-foot",
+      price: 3,
+      nid: 18,
+      platform: PLATFORMS_ENUM.CV
+    }],
+    prize_eth: 2,
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "On the upper part of the wearable it has some traditional design elements such as high necklines and wide sleeves in yellow, blue and white.",
+    width: "80%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "YEARning wearable is DigiFun's first NFT collection being sold in Decentraland . It was designed by our group designer R.G. R.G explains that his inspiration in this wearable design came from Japaneese 15th century´s Ninjia and also Japanese Haori style. With a touch of fashion tailoring, YEARning wearable became our first release. "
+  },
 ]
 class ProductContentList extends React.Component {
   routerTo(v) {
@@ -250,9 +400,8 @@ class ProductContentList extends React.Component {
             {products?.map((item, idx) => (
               <div key={idx} onClick={() => this.routerTo(item)}>
                 <div className="product_card">
-                  <div className={item.css}>
-                    <img src={require('../../assets/' + item.imgPath).default} width={item.width} />
-                  </div>
+                  <img src={require(`../../assets/products/${item?.img}/${item?.img}.jpg`).default} 
+                  style={{ width: "100%", borderTopRightRadius: 10, borderTopLeftRadius: 10 }}/>
                   <div className="product_content_detail_comments">
                     <div className="product_content_detail_comments_intro">
                       <div className="product_content_detail_comments_intro_title">{item.title}</div>
