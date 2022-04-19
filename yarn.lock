@@ -10745,7 +10745,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@^15.6.2", "prop-types@^15.7.2":
+"prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha1-UsQedbjIfnK52TYOAga5ncv/psU="
   "resolved" "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -11331,6 +11331,11 @@
   "resolved" "https://registry.npmmirror.com/react-error-overlay/download/react-error-overlay-6.0.10.tgz"
   "version" "6.0.10"
 
+"react-ga@^3.3.0":
+  "integrity" "sha512-o8RScHj6Lb8cwy3GMrVH6NJvL+y0zpJvKtc0+wmH7Bt23rszJmnqEQxRbyrqUzk9DTJIHoP42bfO5rswC9SWBQ=="
+  "resolved" "https://registry.npmmirror.com/react-ga/-/react-ga-3.3.0.tgz"
+  "version" "3.3.0"
+
 "react-is@^16.12.0", "react-is@^16.7.0", "react-is@^16.8.1":
   "integrity" "sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ="
   "resolved" "https://registry.npmmirror.com/react-is/download/react-is-16.13.1.tgz"
@@ -11442,7 +11447,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^17.0.0", "react@^17.0.2", "react@>= 16.9.0", "react@>=16.0.0", "react@>=16.8", "react@>=16.8.0", "react@>=16.9.0":
+"react@*", "react@^15.6.2 || ^16.0 || ^17", "react@^17.0.0", "react@^17.0.2", "react@>= 16.9.0", "react@>=16.0.0", "react@>=16.8", "react@>=16.8.0", "react@>=16.9.0":
   "integrity" "sha1-0LXMUW0p6z7uOD91tihkz7aAADc="
   "resolved" "https://registry.npmmirror.com/react/download/react-17.0.2.tgz"
   "version" "17.0.2"
