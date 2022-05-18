@@ -1,5 +1,5 @@
 {
-  "name": "hackervalley-frontend",
+  "name": "digifun-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,7 +19,7 @@
     "antd": "^4.18.5",
     "assert": "2.0.0",
     "axios": "^0.25.0",
-    "bnc-notify": "^1.9.4",
+    "bnc-notify": "^1.9.5",
     "buffer": "6.0.3",
     "events": "3.3.0",
     "history": "^5.2.0",

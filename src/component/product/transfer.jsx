@@ -4,12 +4,10 @@ import { useSmallLoading, useSwitch } from "../Loading"
 import { useWeb3React } from "@web3-react/core"
 import React, { useEffect, useState, useMemo } from "react"
 import { NFTContract_ABI } from '../../artifacts/contracts/NFTContract.js'
-import { TransferContract_ABI } from '../../artifacts/contracts/TransferContract'
 import Web3 from 'web3'
 import { useMessage } from "../Message"
-import { platforms } from "./productContent"
-
-const transferAddress = "0xbED2387034955B9B94528FCd1F65af0288ebbB74"
+import {aggregatorAddress, platforms} from "./productContent"
+import {Aggregator_ABI} from "../../artifacts/contracts/Aggregator";
 
 export const useApproveERC721 = (contract, owner, operator) => {
   const [isApproved, setIsApproved] = useState(false);
@@ -83,8 +81,8 @@ export default function Transfer(props) {
     return new w3.eth.Contract(NFTContract_ABI, selectFromPlatform?.address)
   }, [NFTContract_ABI, selectFromPlatform?.address]);
 
-  const transferContract = useMemo(() => new w3.eth.Contract(TransferContract_ABI, transferAddress), [TransferContract_ABI, transferAddress])
-  const { isApproved, approve, loadingApprove } = useApproveERC721(nftContract, account, transferAddress);
+  const aggregatorContract = useMemo(() => new w3.eth.Contract(Aggregator_ABI, aggregatorAddress), [Aggregator_ABI, aggregatorAddress])
+  const { isApproved, approve, loadingApprove } = useApproveERC721(nftContract, account, aggregatorAddress);
 
   useEffect(() => {
     if (loadingApprove) {
@@ -110,7 +108,7 @@ export default function Transfer(props) {
     openLoading();
 
     console.log(to, groupName, fromPlatform, toPlatform)
-    await transferContract.methods
+    await aggregatorContract.methods
       .transferNFTGroup(to, groupName, fromPlatform, toPlatform)
       .send({ from: account }, function (err) {
         if (err) {

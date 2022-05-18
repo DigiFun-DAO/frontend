@@ -5,12 +5,12 @@ import Footer from "../footer";
 import { useNavigate } from 'react-router-dom';
 
 //export const aggregatorAddress = "0xCEC5168cd1DFA9b5Fbe44fE8960E0acd22A57F52"
-export const aggregatorAddress = "0xE1Cf0dDAAF53e79d0126a377981482D39D799f6E"
+export const aggregatorAddress = "0xEed89F6728E1c5E1B685ba6BC87335F8fAe4200b"
 export const MANA = "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4";
 export const DAI = "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063";
 
 //test
-export const USDT = "0x308a6B4974264Ddc9e1a51C32A081a8ec507b675";
+export const USDT = "0x575239873D4EEcf855033cA1aeE96D1DC6325009";
 //export const USDT = "0x308a6B4974264Ddc9e1a51C32A081a8ec507b675";
 
 export const PLATFORMS_ENUM = {
