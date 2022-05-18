@@ -5,7 +5,6 @@ import './productContent'
 import BuyNFT from "../wallet/buyNFT";
 import Transfer from "./transfer";
 import Footer from "../footer";
-import { platforms, products } from "./productContent"
 import { mainColor } from "../../style";
 
 export const ProductsLabel = (props) => {
@@ -20,9 +19,11 @@ export const ProductsLabel = (props) => {
 
 const ProductDetail = () => {
   const strs = window.location.href.split('/');
+  const products = global.products;
   const state = products?.find(item => item.id == strs[strs.length - 1]);
   const [platform_selected_idx, setSelect] = useState(0);
   const [idxs, setSelectIdxs] = useState([]);
+  const platforms = global.platforms;
   const img = useMemo(() => {
     if (idxs?.length > 0) return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/${state.parts[idxs[idxs?.length - 1]]?.label}.png`).default
     if (platform_selected_idx === 1) return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/all2.png`).default

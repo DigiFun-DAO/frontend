@@ -6,7 +6,7 @@ import React, { useEffect, useState, useMemo } from "react"
 import { NFTContract_ABI } from '../../artifacts/contracts/NFTContract.js'
 import Web3 from 'web3'
 import { useMessage } from "../Message"
-import {aggregatorAddress, platforms} from "./productContent"
+import {aggregatorAddress} from "./productContent"
 import {Aggregator_ABI} from "../../artifacts/contracts/Aggregator";
 
 export const useApproveERC721 = (contract, owner, operator) => {
@@ -69,6 +69,7 @@ export default function Transfer(props) {
   const { SmallLoading, loading, open: openLoading, close: closeLoading } = useSmallLoading();
   const [isOpen, openModal, closeModal] = useSwitch();
   const { message } = useMessage();
+  const platforms = global.platforms;
 
   const w3 = new Web3(Web3.givenProvider)
   const selectFromPlatform = useMemo(() => {

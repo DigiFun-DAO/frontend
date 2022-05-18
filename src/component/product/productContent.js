@@ -18,7 +18,7 @@ export const PLATFORMS_ENUM = {
   CV: "cv",
 }
 
-export const platforms = [
+global.platforms = [
   { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x9B0A93EA49955a5ef1878c1a1e8f8645d049e597", ERC20: USDT, ERC20Symbol: "USDT" },
   { value: PLATFORMS_ENUM.CV, label: "Cryptovoxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
   //{ value: "sb", label: "Sandbox", address: "", ERC20: "" },
@@ -153,7 +153,7 @@ export const platforms = [
   }
 ] */
 
-export const products = [
+global.products = [
   {
     id: 0,
     isGroup: true,
@@ -397,7 +397,7 @@ class ProductContentList extends React.Component {
             </div>
           </div>
           <div className="product_card_frame">
-            {products?.map((item, idx) => (
+            {global.products?.map((item, idx) => (
               <div key={idx} onClick={() => this.routerTo(item)}>
                 <div className="product_card">
                   <img src={require(`../../assets/products/${item?.img}/${item?.img}.jpg`).default} 
