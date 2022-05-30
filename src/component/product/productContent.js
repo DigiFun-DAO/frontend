@@ -10,7 +10,8 @@ export const MANA = "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4";
 export const DAI = "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063";
 
 //test
-export const USDT = "0x575239873D4EEcf855033cA1aeE96D1DC6325009";
+export const USDT = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
+// export const USDT = "0x575239873D4EEcf855033cA1aeE96D1DC6325009";
 //export const USDT = "0x308a6B4974264Ddc9e1a51C32A081a8ec507b675";
 
 export const PLATFORMS_ENUM = {
@@ -20,7 +21,7 @@ export const PLATFORMS_ENUM = {
 
 global.platforms = [
   { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x9B0A93EA49955a5ef1878c1a1e8f8645d049e597", ERC20: USDT, ERC20Symbol: "USDT" },
-  { value: PLATFORMS_ENUM.CV, label: "Cryptovoxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
+  { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
   //{ value: "sb", label: "Sandbox", address: "", ERC20: "" },
 ]
 
@@ -32,7 +33,7 @@ global.platforms = [
     detailPath: ["product1_detail1.png", "product1_detail2.png", "product1_detail3.png", "product1_detail4.png", "product1_detail5.png"],
     title: "Evil Snowman1",
     url: "https://market.decentraland.org/contracts/0x622a009f894bf7c6ba069a31217be23f327e95de/items/0",
-    source: "Polygon",
+    source: "Decentraland/Voxels",
     prize: 25,
     prize_eth: 2,
     class: "class_head.png",
@@ -50,7 +51,7 @@ global.platforms = [
     detailPath: ["product2_detail1.png", "product2_detail2.png", "product2_detail3.png", "product2_detail4.png", "product2_detail5.png"],
     title: "Evil Snowman2",
     url: "https://market.decentraland.org/contracts/0x622a009f894bf7c6ba069a31217be23f327e95de/items/1",
-    source: "Polygon",
+    source: "Decentraland/Voxels",
     prize: 25,
     prize_eth: 2,
     class: "class_dress.svg",
@@ -68,7 +69,7 @@ global.platforms = [
     detailPath: ["product3_detail1.png", "product3_detail2.png", "product3_detail3.png", "product3_detail4.png", "product3_detail5.png"],
     title: "R·G YEARning1",
     url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
-    source: "Polygon",
+    source: "Decentraland/Voxels",
     prize: 50,
     prize_eth: 2,
     class: "class_dress.svg",
@@ -86,7 +87,7 @@ global.platforms = [
     detailPath: ["product4_detail1.png", "product4_detail2.png", "product4_detail3.png", "product4_detail4.png", "product4_detail5.png"],
     title: "R·G YEARning2",
     url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/1",
-    source: "Polygon",
+    source: "Decentraland/Voxels",
     prize: 50,
     prize_eth: 2,
     class: "class_pants.png",
@@ -104,7 +105,7 @@ global.platforms = [
     detailPath: ["product5_detail1.png", "product5_detail2.png", "product5_detail3.png", "product5_detail4.png", "product5_detail5.png"],
     title: "Ice Shadow1",
     url: "https://market.decentraland.org/contracts/0x9b0a93ea49955a5ef1878c1a1e8f8645d049e597/items/0",
-    source: "Polygon",
+    source: "Decentraland/Voxels",
     prize: 9,
     prize_eth: 2,
     class: "class_head.png",
@@ -122,7 +123,7 @@ global.platforms = [
     detailPath: ["product6_detail1.png", "product6_detail2.png", "product6_detail3.png", "product6_detail4.png", "product6_detail5.png"],
     title: "Ice Shadow2",
     url: "https://market.decentraland.org/contracts/0x9b0a93ea49955a5ef1878c1a1e8f8645d049e597/items/1",
-    source: "Polygon",
+    source: "Decentraland/Voxels",
     prize: 10,
     prize_eth: 2,
     class: "class_dress.svg",
@@ -140,7 +141,7 @@ global.platforms = [
     detailPath: ["product6_detail1.png", "product6_detail2.png", "product6_detail3.png", "product6_detail4.png", "product6_detail5.png"],
     title: "Ice Shadow",
     url: "https://market.decentraland.org/contracts/0x9b0a93ea49955a5ef1878c1a1e8f8645d049e597/items/1",
-    source: "Polygon",
+    source: "Decentraland/Voxels",
     prize: 19,
     prize_eth: 2,
     class: "class_dress.svg",
@@ -156,146 +157,75 @@ global.platforms = [
 global.products = [
   {
     id: 0,
-    isGroup: true,
-    img: "damoying",
-    imgPath: "product7.png",
-    detailPath: ["product6_detail1.png", "product6_detail2.png", "product6_detail3.png", "product6_detail4.png", "product6_detail5.png"],
-    title: "Ice Shadow",
-    url: "https://market.decentraland.org/contracts/0x9b0a93ea49955a5ef1878c1a1e8f8645d049e597/items/1",
-    source: "Polygon",
-    prize: 19,
-    prize_eth: 2,
-    parts: [{
-      label: "helmet",
-      price: 9,
-      nid: 0,
-      platform: PLATFORMS_ENUM.DCL
-    }, {
-      label: "upper-body",
-      price: 10,
-      nid: 1,
-      platform: PLATFORMS_ENUM.DCL
-    }, {
-      label: "head",
-      price: 2,
-      nid: 10,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "chest",
-      price: 2,
-      nid: 11,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "upper-left-wing",
-      price: 2,
-      nid: 12,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "lower-left-wing",
-      price: 2,
-      nid: 13,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "upper-right-wing",
-      price: 2,
-      nid: 14,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "lower-right-wing",
-      price: 2,
-      nid: 15,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "leg",
-      price: 2,
-      nid: 16,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "right-base",
-      price: 2,
-      nid: 17,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "left-base",
-      price: 3,
-      nid: 18,
-      platform: PLATFORMS_ENUM.CV
-    }],
-    class: "class_dress.svg",
-    sex: "sex_male.svg",
-    desc: "A cloak and body supported by ice",
-    width: "50%",
-    css: "product_content_img_frame_normal",
-    cssDetail: "product_item_photo",
-    detail: "Ice Shadow was born with super abilities, his parents have mutated with a bat, causing it to have some human sized mat black wings, being able to fly as fast as speed of light. But because he was born in a super ice research laboratory, he is able to manipulate ice and cold by freezing all the water around him, this ability is mainly to maintain his body temperature as he can´t survive in normal temperature conditions. Because he needs to be living in extremely cold temperatures, he wants to convert our meta world into a freeze planet that’s why everyone also knows him as the devil of ice. "
-  },
-  {
-    id: 1,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x622A009f894bF7c6Ba069a31217BE23F327e95DE", ERC20: USDT, ERC20Symbol: "USDT" },
+      { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
     isGroup: true,
     img: "snowman2",
     imgPath: "product1.png",
     detailPath: ["product1_detail1.png", "product1_detail2.png", "product1_detail3.png", "product1_detail4.png", "product1_detail5.png"],
     title: "Evil Snowman",
     url: "https://market.decentraland.org/contracts/0x622a009f894bf7c6ba069a31217be23f327e95de/items/0",
-    source: "Polygon",
-    prize: 25,
+    source: "Decentraland/Voxels",
+    prize: 88,
     parts: [{
       label: "head",
-      price: 9,
-      nid: 0,
+      price: 49,
+      nid: 10000,
       platform: PLATFORMS_ENUM.DCL
     }, {
-      label: "upper-body",
-      price: 10,
-      nid: 1,
+      label: "body",
+      price: 39,
+      nid: 10001,
       platform: PLATFORMS_ENUM.DCL
     }, {
       label: "head",
-      price: 2,
-      nid: 10,
+      price: 16,
+      nid: 10010,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "upper-body",
-      price: 2,
-      nid: 11,
+      price: 9,
+      nid: 10011,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "lower-body",
-      price: 2,
-      nid: 12,
+      price: 9,
+      nid: 10012,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "right-hand",
-      price: 2,
-      nid: 13,
+      price: 9,
+      nid: 10013,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "left-hand",
-      price: 2,
-      nid: 14,
+      price: 9,
+      nid: 10014,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "left-foot",
-      price: 2,
-      nid: 15,
+      price: 9,
+      nid: 10015,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "right-foot",
-      price: 2,
-      nid: 16,
+      price: 9,
+      nid: 10016,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "lower-tail",
-      price: 2,
-      nid: 17,
+      price: 9,
+      nid: 10017,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "upper-tail",
-      price: 3,
-      nid: 18,
+      price: 9,
+      nid: 10018,
       platform: PLATFORMS_ENUM.CV
     }],
-    prize_eth: 2,
+    prize_eth: 9,
     class: "class_head.png",
     sex: "sex_all.svg",
     desc: "The Evil Snowman's head colour is dominated by scarlet red and silver gray, punctuated by dark gray glowing eyes.",
@@ -305,70 +235,382 @@ global.products = [
     detail: "Evil snowman is a funny and scary guy, it attracts you with its round body and lovely appearance, but it may bite off your head when you are not paying attention to it. Evil snowman was born on a dim night just right after Halloween night. He was woken up by the kids' noises while going trick or treating. But kids have noticed that he is a funny and at the same time a scary guy by its appearance. With it´s rounded shape, no one thinks he's scary at all, however, we all need to be careful because he will bite poeple's head when they are not paying attention to it."
   },
   {
+    id: 1,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x9B0A93EA49955a5ef1878c1a1e8f8645d049e597", ERC20: USDT, ERC20Symbol: "USDT" },
+      { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
+    isGroup: true,
+    img: "damoying",
+    imgPath: "product7.png",
+    detailPath: ["product6_detail1.png", "product6_detail2.png", "product6_detail3.png", "product6_detail4.png", "product6_detail5.png"],
+    title: "Ice Shadow",
+    url: "https://market.decentraland.org/contracts/0x9b0a93ea49955a5ef1878c1a1e8f8645d049e597/items/1",
+    source: "Decentraland/Voxels",
+    prize: 28,
+    prize_eth: 2,
+    parts: [{
+      label: "head",
+      price: 19,
+      nid: 10100,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "body",
+      price: 9,
+      nid: 10101,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "head",
+      price: 12,
+      nid: 10110,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "chest",
+      price: 2,
+      nid: 10111,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-left-wing",
+      price: 2,
+      nid: 10112,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-left-wing",
+      price: 2,
+      nid: 10113,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-right-wing",
+      price: 2,
+      nid: 10114,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-right-wing",
+      price: 2,
+      nid: 10115,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "leg",
+      price: 2,
+      nid: 10116,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-base",
+      price: 2,
+      nid: 10117,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-base",
+      price: 2,
+      nid: 10118,
+      platform: PLATFORMS_ENUM.CV
+    }],
+    class: "class_dress.svg",
+    sex: "sex_all.svg",
+    desc: "A cloak and body supported by ice",
+    width: "50%",
+    css: "product_content_img_frame_normal",
+    cssDetail: "product_item_photo",
+    detail: "Ice Shadow was born with super abilities, his parents have mutated with a bat, causing it to have some human sized mat black wings, being able to fly as fast as speed of light. But because he was born in a super ice research laboratory, he is able to manipulate ice and cold by freezing all the water around him, this ability is mainly to maintain his body temperature as he can´t survive in normal temperature conditions. Because he needs to be living in extremely cold temperatures, he wants to convert our meta world into a freeze planet that’s why everyone also knows him as the devil of ice. "
+  },
+  {
     id: 2,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0xfaA99E11cf1CD37660975ae7F3623114b1e1b7A6", ERC20: USDT, ERC20Symbol: "USDT" },
+      { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x4aecb483A9C8E76875b914Ca22a168737F01dB32", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
+    isGroup: true,
+    img: "xiaomoying",
+    imgPath: "product3.png",
+    detailPath: ["product13_detail1.png", "product13_detail2.png", "product13_detail3.png", "product13_detail4.png", "product13_detail5.png"],
+    title: "Baby Devil",
+    url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
+    source: "Decentraland/Voxels",
+    prize: 88,
+    parts: [{
+      label: "head",
+      price: 49,
+      nid: 10200,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "body",
+      price: 39,
+      nid: 10201,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "lower-head",
+      price: 16,
+      nid: 10210,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-head",
+      price: 9,
+      nid: 10211,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-body",
+      price: 9,
+      nid: 10212,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-body",
+      price: 9,
+      nid: 10213,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-hand",
+      price: 9,
+      nid: 10214,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-hand",
+      price: 9,
+      nid: 10215,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "flame",
+      price: 9,
+      nid: 10216,
+      platform: PLATFORMS_ENUM.CV
+    }],
+    prize_eth: 2,
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "On the upper part of the wearable it has some traditional design elements such as high necklines and wide sleeves in yellow, blue and white.",
+    width: "80%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "YEARning wearable is DigiFun's first NFT collection being sold in Decentraland . It was designed by our group designer R.G. R.G explains that his inspiration in this wearable design came from Japaneese 15th century´s Ninjia and also Japanese Haori style. With a touch of fashion tailoring, YEARning wearable became our first release. "
+  },
+  {
+    id: 3,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0xc2c1EFd454d4E8C5F91477f63abC53faE74d2ed3", ERC20: USDT, ERC20Symbol: "USDT" },
+      { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
     isGroup: true,
     img: "renzhe",
     imgPath: "product3.png",
     detailPath: ["product3_detail1.png", "product3_detail2.png", "product3_detail3.png", "product3_detail4.png", "product3_detail5.png"],
     title: "R·G YEARning",
     url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
-    source: "Polygon",
-    prize: 50,
+    source: "Decentraland/Voxels",
+    prize: 88,
     parts: [{
-      label: "upper-body",
-      price: 9,
-      nid: 0,
+      label: "head",
+      price: 49,
+      nid: 10300,
       platform: PLATFORMS_ENUM.DCL
     }, {
-      label: "lower-body",
-      price: 10,
-      nid: 1,
+      label: "pants",
+      price: 39,
+      nid: 10301,
       platform: PLATFORMS_ENUM.DCL
     }, {
       label: "head",
-      price: 2,
-      nid: 10,
+      price: 16,
+      nid: 10310,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "body",
-      price: 2,
-      nid: 11,
+      price: 9,
+      nid: 10311,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "belt",
-      price: 2,
-      nid: 12,
+      price: 9,
+      nid: 10312,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "right-hand",
-      price: 2,
-      nid: 13,
+      price: 9,
+      nid: 10313,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "left-hand",
-      price: 2,
-      nid: 14,
+      price: 9,
+      nid: 10314,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "right-leg",
-      price: 2,
-      nid: 15,
+      price: 9,
+      nid: 10315,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "left-leg",
-      price: 2,
-      nid: 16,
+      price: 9,
+      nid: 10316,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "left-foot",
-      price: 2,
-      nid: 17,
+      price: 9,
+      nid: 10317,
       platform: PLATFORMS_ENUM.CV
     }, {
       label: "right-foot",
-      price: 3,
-      nid: 18,
+      price: 9,
+      nid: 10318,
       platform: PLATFORMS_ENUM.CV
+    }],
+    prize_eth: 2,
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "On the upper part of the wearable it has some traditional design elements such as high necklines and wide sleeves in yellow, blue and white.",
+    width: "80%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "YEARning wearable is DigiFun's first NFT collection being sold in Decentraland . It was designed by our group designer R.G. R.G explains that his inspiration in this wearable design came from Japaneese 15th century´s Ninjia and also Japanese Haori style. With a touch of fashion tailoring, YEARning wearable became our first release. "
+  },
+  {
+    id: 4,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x7031d12460d50Bc871Eb14c40393bBaa56cD9A60", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
+    isGroup: true,
+    img: "ninja2",
+    imgPath: "product3.png",
+    detailPath: ["product10_detail1.png", "product10_detail2.png", "product10_detail3.png", "product10_detail4.png", "product10_detail5.png"],
+    title: "Ninja2",
+    url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
+    source: "Decentraland",
+    prize: 28,
+    parts: [{
+      label: "Hair-band",
+      price: 9,
+      nid: 10400,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "Cloak",
+      price: 19,
+      nid: 10401,
+      platform: PLATFORMS_ENUM.DCL
+    }],
+    prize_eth: 2,
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "On the upper part of the wearable it has some traditional design elements such as high necklines and wide sleeves in yellow, blue and white.",
+    width: "80%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "YEARning wearable is DigiFun's first NFT collection being sold in Decentraland . It was designed by our group designer R.G. R.G explains that his inspiration in this wearable design came from Japaneese 15th century´s Ninjia and also Japanese Haori style. With a touch of fashion tailoring, YEARning wearable became our first release. "
+  },
+  {
+    id: 5,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0xbb2B71E685a53550907Fb62524E7d5C72dd37747", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
+    isGroup: true,
+    img: "frog",
+    imgPath: "product3.png",
+    detailPath: ["product9_detail1.png", "product9_detail2.png", "product9_detail3.png", "product9_detail4.png"],
+    title: "Orange Frog",
+    url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
+    source: "Decentraland",
+    prize: 28,
+    parts: [{
+      label: "Head",
+      price: 19,
+      nid: 10500,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "Body",
+      price: 9,
+      nid: 10501,
+      platform: PLATFORMS_ENUM.DCL
+    }],
+    prize_eth: 2,
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "On the upper part of the wearable it has some traditional design elements such as high necklines and wide sleeves in yellow, blue and white.",
+    width: "80%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "YEARning wearable is DigiFun's first NFT collection being sold in Decentraland . It was designed by our group designer R.G. R.G explains that his inspiration in this wearable design came from Japaneese 15th century´s Ninjia and also Japanese Haori style. With a touch of fashion tailoring, YEARning wearable became our first release. "
+  },
+  {
+    id: 6,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0xdc764BF33Db66986775244FEf0cD94014D87C508", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
+    isGroup: true,
+    img: "jian",
+    imgPath: "product3.png",
+    detailPath: ["product11_detail1.png", "product11_detail2.png", "product11_detail3.png", "product11_detail4.png", "product11_detail5.png"],
+    title: "JIAN",
+    url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
+    source: "Decentraland",
+    prize: 118,
+    parts: [{
+      label: "dress",
+      price: 99,
+      nid: 10600,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "glass",
+      price: 19,
+      nid: 10601,
+      platform: PLATFORMS_ENUM.DCL
+    }],
+    prize_eth: 2,
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "On the upper part of the wearable it has some traditional design elements such as high necklines and wide sleeves in yellow, blue and white.",
+    width: "80%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "YEARning wearable is DigiFun's first NFT collection being sold in Decentraland . It was designed by our group designer R.G. R.G explains that his inspiration in this wearable design came from Japaneese 15th century´s Ninjia and also Japanese Haori style. With a touch of fashion tailoring, YEARning wearable became our first release. "
+  },
+  {
+    id: 7,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x7C9FE6d2493f13b0705758c6990De59F09D10F42", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
+    isGroup: true,
+    img: "landscape",
+    imgPath: "product3.png",
+    detailPath: ["product12_detail1.png", "product12_detail2.png", "product12_detail3.png", "product12_detail4.png"],
+    title: "Landscape Panorama",
+    url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
+    source: "Decentraland",
+    prize: 88,
+    parts: [{
+      label: "gown",
+      price: 59,
+      nid: 10700,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "hat",
+      price: 29,
+      nid: 10701,
+      platform: PLATFORMS_ENUM.DCL
+    }],
+    prize_eth: 2,
+    class: "class_dress.svg",
+    sex: "sex_male.svg",
+    desc: "On the upper part of the wearable it has some traditional design elements such as high necklines and wide sleeves in yellow, blue and white.",
+    width: "80%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "YEARning wearable is DigiFun's first NFT collection being sold in Decentraland . It was designed by our group designer R.G. R.G explains that his inspiration in this wearable design came from Japaneese 15th century´s Ninjia and also Japanese Haori style. With a touch of fashion tailoring, YEARning wearable became our first release. "
+  },
+  {
+    id: 8,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x7C9FE6d2493f13b0705758c6990De59F09D10F42", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
+    isGroup: true,
+    img: "emper",
+    imgPath: "product3.png",
+    detailPath: ["product8_detail1.png", "product8_detail2.png", "product8_detail3.png", "product8_detail4.png", "product8_detail5.png"],
+    title: "Emperor's Golden Dragon Robe",
+    url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
+    source: "Decentraland",
+    prize: 28,
+    parts: [{
+      label: "all",
+      price: 198,
+      nid: 10800,
+      platform: PLATFORMS_ENUM.DCL
     }],
     prize_eth: 2,
     class: "class_dress.svg",

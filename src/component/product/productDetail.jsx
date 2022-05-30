@@ -23,7 +23,7 @@ const ProductDetail = () => {
   const state = products?.find(item => item.id == strs[strs.length - 1]);
   const [platform_selected_idx, setSelect] = useState(0);
   const [idxs, setSelectIdxs] = useState([]);
-  const platforms = global.platforms;
+  const platforms = state.platforms;
   const img = useMemo(() => {
     if (idxs?.length > 0) return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/${state.parts[idxs[idxs?.length - 1]]?.label}.png`).default
     if (platform_selected_idx === 1) return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/all2.png`).default
@@ -125,10 +125,15 @@ const ProductDetail = () => {
                       style={{ marginLeft: '0px', marginTop: 5 }} />
                     <span className="product_content_detail_prize_words">{idxs?.reduce((pre, next) => state?.parts[next]?.price + pre, 0)}</span>
                   </div>
-                  { state?.id === 0 && <div className="button_group">
-                    <BuyNFT ERC20={platforms[platform_selected_idx]?.ERC20} nids={idxs?.map(item=>state?.parts[item]?.nid)}/>
-                    <Transfer groupName={state?.title}/>
-                  </div> }
+                  { state?.platforms.length > 0 &&
+                    <div className="button_group">
+                      <BuyNFT ERC20={platforms[platform_selected_idx]?.ERC20} nids={idxs?.map(item=>state?.parts[item]?.nid)}/>
+                      {
+                        state?.platforms.length > 1 &&
+                        <Transfer groupName={state?.title}/>
+                      }
+                    </div>
+                  }
                 </div>
               </ProductsLabel>
             </div>

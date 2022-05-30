@@ -23,6 +23,7 @@
     "buffer": "6.0.3",
     "events": "3.3.0",
     "history": "^5.2.0",
+    "http-serve": "^1.0.1",
     "moment": "^2.29.1",
     "muse-ui": "^3.0.2",
     "process": "0.11.10",

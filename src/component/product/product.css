@@ -127,7 +127,7 @@
 
 .product_content_detail_comments_intro_title {
     position: static;
-    width: 152px;
+    width: 500px;
     height: 30px;
     left: 24px;
     top: 12px;
@@ -144,7 +144,7 @@
 
 .product_content_detail_comments_intro_source {
     position: static;
-    width: 61px;
+    width: 500px;
     height: 21px;
     left: 24px;
     top: 48px;
@@ -304,13 +304,13 @@
 }
 
 .product_item_photo_title {
-    width: 363px;
+    width: 900px;
     height: 76px;
 
     font-family: Poppins-Bold;
     font-style: normal;
     font-weight: bold;
-    font-size: 42px;
+    font-size: 36px;
     line-height: 180%;
     /* identical to box height, or 76px *
 
