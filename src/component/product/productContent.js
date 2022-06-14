@@ -5,14 +5,13 @@ import Footer from "../footer";
 import { useNavigate } from 'react-router-dom';
 
 //export const aggregatorAddress = "0xCEC5168cd1DFA9b5Fbe44fE8960E0acd22A57F52"
-export const aggregatorAddress = "0xEed89F6728E1c5E1B685ba6BC87335F8fAe4200b"
+export const aggregatorAddress = "0x994ae7d8adA56468A54035429D560ff0bb5d88CC"
 export const MANA = "0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4";
 export const DAI = "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063";
 
 //test
 export const USDT = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
 // export const USDT = "0x575239873D4EEcf855033cA1aeE96D1DC6325009";
-//export const USDT = "0x308a6B4974264Ddc9e1a51C32A081a8ec507b675";
 
 export const PLATFORMS_ENUM = {
   DCL: "dcl",
@@ -158,81 +157,31 @@ global.products = [
   {
     id: 0,
     platforms: [
-      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x622A009f894bF7c6Ba069a31217BE23F327e95DE", ERC20: USDT, ERC20Symbol: "USDT" },
-      { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x1A3C458077772e678BbBcf2FD74a0b3284a412ce", ERC20: USDT, ERC20Symbol: "USDT" },
     ],
     isGroup: true,
-    img: "snowman2",
-    imgPath: "product1.png",
-    detailPath: ["product1_detail1.png", "product1_detail2.png", "product1_detail3.png", "product1_detail4.png", "product1_detail5.png"],
-    title: "Evil Snowman",
-    url: "https://market.decentraland.org/contracts/0x622a009f894bf7c6ba069a31217be23f327e95de/items/0",
-    source: "Decentraland/Voxels",
-    prize: 88,
+    img: "wing",
+    imgPath: "product3.png",
+    detailPath: ["product14_detail1.png", "product14_detail2.png", "product14_detail3.png", "product14_detail4.png", "product14_detail5.png"],
+    title: "Pride Phoenix Wings",
+    url: "https://market.decentraland.org/contracts/0xc2c1efd454d4e8c5f91477f63abc53fae74d2ed3/items/0",
+    source: "Decentraland",
+    prize: 29,
     parts: [{
-      label: "head",
-      price: 49,
-      nid: 10000,
+      label: "all",
+      price: 29,
+      nid: 10900,
       platform: PLATFORMS_ENUM.DCL
-    }, {
-      label: "body",
-      price: 39,
-      nid: 10001,
-      platform: PLATFORMS_ENUM.DCL
-    }, {
-      label: "head",
-      price: 16,
-      nid: 10010,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "upper-body",
-      price: 9,
-      nid: 10011,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "lower-body",
-      price: 9,
-      nid: 10012,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "right-hand",
-      price: 9,
-      nid: 10013,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "left-hand",
-      price: 9,
-      nid: 10014,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "left-foot",
-      price: 9,
-      nid: 10015,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "right-foot",
-      price: 9,
-      nid: 10016,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "lower-tail",
-      price: 9,
-      nid: 10017,
-      platform: PLATFORMS_ENUM.CV
-    }, {
-      label: "upper-tail",
-      price: 9,
-      nid: 10018,
-      platform: PLATFORMS_ENUM.CV
     }],
-    prize_eth: 9,
-    class: "class_head.png",
+    prize_eth: 2,
+    class: "class_dress.svg",
     sex: "sex_all.svg",
-    desc: "The Evil Snowman's head colour is dominated by scarlet red and silver gray, punctuated by dark gray glowing eyes.",
-    width: "50%",
+    desc: "Hope rises like a phoenix from the ashes of shattered dreams.",
+    width: "80%",
     css: "product_content_img_frame",
     cssDetail: "product_item_photo",
-    detail: "Evil snowman is a funny and scary guy, it attracts you with its round body and lovely appearance, but it may bite off your head when you are not paying attention to it. Evil snowman was born on a dim night just right after Halloween night. He was woken up by the kids' noises while going trick or treating. But kids have noticed that he is a funny and at the same time a scary guy by its appearance. With it´s rounded shape, no one thinks he's scary at all, however, we all need to be careful because he will bite poeple's head when they are not paying attention to it."
+    detail: "Morchen uses the most representative rainbow elements of LGBTQIA+ to create a light sense of shape by layering, inlaying and fusing rows to present this visually striking pair of wings.\n" +
+      "The pronunciation of \"wings\" is similar to that of \"wins\". DigiFun hopes that through the construction of a personal avatar, the wearer will have the courage to become whomever they want to be, no matter where they are.\n"
   },
   {
     id: 1,
@@ -620,6 +569,85 @@ global.products = [
     css: "product_content_img_frame",
     cssDetail: "product_item_photo",
     detail: "YEARning wearable is DigiFun's first NFT collection being sold in Decentraland . It was designed by our group designer R.G. R.G explains that his inspiration in this wearable design came from Japaneese 15th century´s Ninjia and also Japanese Haori style. With a touch of fashion tailoring, YEARning wearable became our first release. "
+  },
+  {
+    id: 9,
+    platforms: [
+      { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x622A009f894bF7c6Ba069a31217BE23F327e95DE", ERC20: USDT, ERC20Symbol: "USDT" },
+      { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
+    ],
+    isGroup: true,
+    img: "snowman2",
+    imgPath: "product1.png",
+    detailPath: ["product1_detail1.png", "product1_detail2.png", "product1_detail3.png", "product1_detail4.png", "product1_detail5.png"],
+    title: "Evil Snowman",
+    url: "https://market.decentraland.org/contracts/0x622a009f894bf7c6ba069a31217be23f327e95de/items/0",
+    source: "Decentraland/Voxels",
+    prize: 88,
+    parts: [{
+      label: "head",
+      price: 49,
+      nid: 10000,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "body",
+      price: 39,
+      nid: 10001,
+      platform: PLATFORMS_ENUM.DCL
+    }, {
+      label: "head",
+      price: 16,
+      nid: 10010,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-body",
+      price: 9,
+      nid: 10011,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-body",
+      price: 9,
+      nid: 10012,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-hand",
+      price: 9,
+      nid: 10013,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-hand",
+      price: 9,
+      nid: 10014,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "left-foot",
+      price: 9,
+      nid: 10015,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "right-foot",
+      price: 9,
+      nid: 10016,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "lower-tail",
+      price: 9,
+      nid: 10017,
+      platform: PLATFORMS_ENUM.CV
+    }, {
+      label: "upper-tail",
+      price: 9,
+      nid: 10018,
+      platform: PLATFORMS_ENUM.CV
+    }],
+    prize_eth: 9,
+    class: "class_head.png",
+    sex: "sex_all.svg",
+    desc: "The Evil Snowman's head colour is dominated by scarlet red and silver gray, punctuated by dark gray glowing eyes.",
+    width: "50%",
+    css: "product_content_img_frame",
+    cssDetail: "product_item_photo",
+    detail: "Evil snowman is a funny and scary guy, it attracts you with its round body and lovely appearance, but it may bite off your head when you are not paying attention to it. Evil snowman was born on a dim night just right after Halloween night. He was woken up by the kids' noises while going trick or treating. But kids have noticed that he is a funny and at the same time a scary guy by its appearance. With it´s rounded shape, no one thinks he's scary at all, however, we all need to be careful because he will bite poeple's head when they are not paying attention to it."
   },
 ]
 class ProductContentList extends React.Component {
