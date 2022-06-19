@@ -35,7 +35,7 @@ const ProductDetail = () => {
       {/*<Header/>*/}
       <div className='product_item_frame'>
         <div className='product_item_frame_absolute'>
-          <div className={state.cssDetail} style={{ background: "#944fdc" }}>
+          <div className={state.cssDetail} style={{ background: (state.rare) ? "#944fdc" : "#5d8be6" }}>
             <img src={img} style={{ width: "100%", maxHeight: "100%" }} />
           </div>
           <div className="product_item">
