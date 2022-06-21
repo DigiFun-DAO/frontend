@@ -19,8 +19,8 @@ export const PLATFORMS_ENUM = {
 }
 
 global.platforms = [
-  { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x9B0A93EA49955a5ef1878c1a1e8f8645d049e597", ERC20: USDT, ERC20Symbol: "USDT" },
-  { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x9eA07c5Ee61e82993B0544CEcEcaDeDD3C9F0fA1", ERC20: USDT, ERC20Symbol: "USDT" },
+  { value: PLATFORMS_ENUM.DCL, label: "Decentraland", address: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174", ERC20: USDT, ERC20Symbol: "USDT" },
+  { value: PLATFORMS_ENUM.CV, label: "Voxels", address: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174", ERC20: USDT, ERC20Symbol: "USDT" },
   //{ value: "sb", label: "Sandbox", address: "", ERC20: "" },
 ]
 
