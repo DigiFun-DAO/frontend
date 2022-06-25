@@ -92,19 +92,19 @@ class Header extends React.Component {
               <div className={this.state.button_selected === 4 ? "word_selected" : "word_empty"}>Docs</div>
             </button>
           </a>
-          {/*<a style={{textDecoration: "none"}}*/}
-          {/*   href="https://digifundao.com/blogs">*/}
-          {/*  <button className={this.state.button_selected === 5 ? "button_selected" : "button_empty"}*/}
-          {/*          style={{cursor: 'pointer'}}*/}
-          {/*          onMouseEnter={() => {*/}
-          {/*            this.setState({button_selected: 5})*/}
-          {/*          }}*/}
-          {/*          onMouseLeave={() => {*/}
-          {/*            this.setState({button_selected: 0})*/}
-          {/*          }}>*/}
-          {/*    <div className={this.state.button_selected === 5 ? "word_selected" : "word_empty"}>Blogs</div>*/}
-          {/*  </button>*/}
-          {/*</a>*/}
+          <a style={{textDecoration: "none"}}
+             href="https://digifundao.com/blogs">
+            <button className={this.state.button_selected === 5 ? "button_selected" : "button_empty"}
+                    style={{cursor: 'pointer'}}
+                    onMouseEnter={() => {
+                      this.setState({button_selected: 5})
+                    }}
+                    onMouseLeave={() => {
+                      this.setState({button_selected: 0})
+                    }}>
+              <div className={this.state.button_selected === 5 ? "word_selected" : "word_empty"}>Blogs</div>
+            </button>
+          </a>
         </div>
         <Metamask/>
         {/*<div className="header_wallet">*/}
