@@ -7,7 +7,7 @@ import Web3 from 'web3'
 import { useSmallLoading, useSwitch } from "../Loading"
 import { useMessage } from "../Message"
 import Notify from "bnc-notify";
-import { aggregatorAddress } from "../product/productContent"
+import {aggregatorAddress, global_products} from "../product/productContent"
 
 const toBN = Web3.utils.toBN;
 
@@ -85,7 +85,7 @@ export const useApproveERC20 = (contract, account, spender, needApproveAmount) =
 export default function BuyNFT(props) {
 
   const strs = window.location.href.split('/');
-  const products = global.products;
+  const products = global_products;
   const nftState = products?.find(item => item.id == strs[strs.length - 1])
 
   const { active, account, library, connector, activate, deactivate } = useWeb3React()
@@ -95,7 +95,7 @@ export default function BuyNFT(props) {
   const aggregator = useMemo(() => new w3.eth.Contract(Aggregator_ABI, aggregatorAddress), [Aggregator_ABI, aggregatorAddress])
   const { SmallLoading, open, close, loading } = useSmallLoading();
   const { message } = useMessage();
-  const { isApproved, approve, loadingApprove } = useApproveERC20(mana, account, aggregatorAddress, w3.utils.toWei('' + nftState['prize'], 'ether'))
+  const { isApproved, approve, loadingApprove } = useApproveERC20(mana, account, aggregatorAddress, w3.utils.toWei('' + nftState['price'], 'ether'))
 
   useEffect(() => {
     if (loadingApprove) {

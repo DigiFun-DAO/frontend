@@ -11,12 +11,17 @@ import Web3 from 'web3'
 import Header from "./component/header";
 import { ConfigProvider } from "antd"
 import { MessageProvider } from "./component/Message"
+import ReactGA from 'react-ga';
+const TRACKING_ID = "G-4MJ7F3CJWQ"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 function getLibrary(provider) {
   return new Web3(provider)
 }
 
 const rootElement = document.getElementById("root");
+
+
 render(
   <ConfigProvider>
     <MessageProvider>

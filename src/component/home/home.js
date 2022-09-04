@@ -3,10 +3,13 @@ import Top from "../top"
 import Product from "./product"
 import DAO from "./DAO"
 import Footer from "../footer";
-import Header from "../header";
+import ReactGA from 'react-ga';
+const TRACKING_ID = "G-4MJ7F3CJWQ"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 class Home extends React.Component {
   componentDidMount() {
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }
 
   componentWillUnmount() {
