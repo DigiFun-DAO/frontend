@@ -582,7 +582,7 @@ constructor(props) {
           </div>
           <div className="product_card_frame">
             {/*{console.log(1)}*/}
-            {global_products.map((item, idx) => (
+            {global_products.reverse().map((item, idx) => (
               // console.log(item)
               <div key={idx} onClick={() => this.routerTo(item)}>
                 <div className="product_card">
@@ -605,7 +605,6 @@ constructor(props) {
             ))}
           </div>
         </div>
-
         <Footer />
       </div>
     );

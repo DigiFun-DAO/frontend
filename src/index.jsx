@@ -12,8 +12,16 @@ import Header from "./component/header";
 import { ConfigProvider } from "antd"
 import { MessageProvider } from "./component/Message"
 import ReactGA from 'react-ga';
+import { createBrowserHistory } from 'history';
+
 const TRACKING_ID = "G-4MJ7F3CJWQ"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
+
+let history = createBrowserHistory();
+history.listen((location) => {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+});
+
 
 function getLibrary(provider) {
   return new Web3(provider)
