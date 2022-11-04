@@ -4,7 +4,8 @@ import '../../App.css';
 import Footer from "../footer";
 import { useNavigate } from 'react-router-dom';
 import ReactGA from 'react-ga';
-const TRACKING_ID = "G-4MJ7F3CJWQ"; // OUR_TRACKING_ID
+import { Pagination } from 'antd';
+const TRACKING_ID = "UA-226359084-1"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
 //export const aggregatorAddress = "0xCEC5168cd1DFA9b5Fbe44fE8960E0acd22A57F52"
@@ -478,7 +479,7 @@ class ProductContentList extends React.Component {
 
 constructor(props) {
   super(props);
-  this.state = {products: {}};
+  this.state = {products: {}, page: 0};
 }
 
 // componentDidMount() {
@@ -562,11 +563,18 @@ constructor(props) {
   }
 
   componentDidMount() {
+    const TRACKING_ID = "UA-226359084-1"; // OUR_TRACKING_ID
+    ReactGA.initialize(TRACKING_ID);
+    ReactGA.pageview(window.location.pathname + window.location.search);
     fetch("/api/groups", {method: 'GET'}).then(response => this.renderProducts(response));
   }
 
   routerTo(v) {
     this.props.navigate(`/product/detail/${v.id}`, { state: v })
+  }
+
+  onChange = (p) => {
+    this.setState({page: p-1})
   }
 
   render() {
@@ -582,8 +590,9 @@ constructor(props) {
           </div>
           <div className="product_card_frame">
             {/*{console.log(1)}*/}
-            {global_products.reverse().map((item, idx) => (
-              // console.log(item)
+            {/*{global_products.reverse().slice(this.state.page*9, (this.state.page+1)*9>global_products.length?global_products.length:(this.state.page+1)*9).map((item, idx) => (*/}
+              {global_products.reverse().map((item, idx) => (
+                  // console.log(item)
               <div key={idx} onClick={() => this.routerTo(item)}>
                 <div className="product_card">
                   <img src={item.img} style={{ width: "100%", borderTopRightRadius: 10, borderTopLeftRadius: 10 }}/>
@@ -604,6 +613,9 @@ constructor(props) {
               </div>
             ))}
           </div>
+          {/*<div>*/}
+          {/*  <Pagination className="product_page" current={this.state.page+1} onChange={this.onChange} total={global_products.length / 9 + (global_products.length % 9 === 0? 0:1)} />*/}
+          {/*</div>*/}
         </div>
         <Footer />
       </div>

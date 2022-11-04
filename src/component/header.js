@@ -105,6 +105,20 @@ class Header extends React.Component {
               <div className={this.state.button_selected === 5 ? "word_selected" : "word_empty"}>Blogs</div>
             </button>
           </a>
+          <button className={this.state.button_selected === 6 ? "button_selected" : "button_empty"}
+                  style={{cursor: 'pointer'}}
+                  onMouseEnter={() => {
+                    this.setState({button_selected: 6})
+                  }}
+                  onMouseLeave={() => {
+                    this.setState({button_selected: 0})
+                  }}
+                  onClick={() => {
+                    history.push('/#/videos')
+                    window.location.reload()
+                  }}>
+            <div className={this.state.button_selected === 6 ? "word_selected" : "word_empty"}>Videos</div>
+          </button>
         </div>
         <Metamask/>
         {/*<div className="header_wallet">*/}

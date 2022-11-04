@@ -6,7 +6,11 @@ import BuyNFT from "../wallet/buyNFT";
 import Transfer from "./transfer";
 import Footer from "../footer";
 import { mainColor } from "../../style";
+import { useLocation,} from 'react-router-dom';
 import {global_products, PLATFORMS_ENUM, setProducts, USDT} from "./productContent";
+import ReactGA from "react-ga";
+const TRACKING_ID = "UA-226359084-1"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 export const ProductsLabel = (props) => {
   const { title, children } = props;
@@ -97,7 +101,15 @@ const ProductDetail = () => {
     if (global_products.length === 0) {
       getProducts()
     }
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
+
+  const location = useLocation();
+
+  // Fired on every route change
+  useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);
 
   return (
     <div>
