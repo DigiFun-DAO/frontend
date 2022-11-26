@@ -9,6 +9,7 @@ import { mainColor } from "../../style";
 import { useLocation,} from 'react-router-dom';
 import {global_products, PLATFORMS_ENUM, setProducts, USDT} from "./productContent";
 import ReactGA from "react-ga";
+import QueryNFT from "../wallet/queryNFT";
 const TRACKING_ID = "UA-226359084-1"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
@@ -68,6 +69,10 @@ async function getAll(){
   resetProducts(data)
 }
 
+async function getNFTBalance(nid){
+  await QueryNFT(nid)
+}
+
 const ProductDetail = () => {
   // fetch("/api/groups", {method: 'GET'}).then(response => {
   //
@@ -78,16 +83,14 @@ const ProductDetail = () => {
   // const products = global_products
   const [platform_selected_idx, setSelect] = useState(0);
   const [idxs, setSelectIdxs] = useState([]);
+  const [balance, setBalance] = useState("");
   const [state, setState] = useState(global_products.length > 0 ? global_products?.find(item => item.id == strs[strs.length - 1]): {})
   const platforms = state.platforms;
   const img = useMemo(() => {
-    // console.log(platform_selected_idx)
-    // console.log(`${state.platform_imgs[platform_selected_idx]}`)
     if(global_products.length === 0) {
       return ""
     }
     if (idxs?.length > 0) return `${state.parts[idxs[idxs?.length - 1]]?.image}`
-    // if (platform_selected_idx === 1) return require(`../../assets/products/${state?.img}/parts/${platforms[platform_selected_idx]?.value}/all2.png`).default
     return `${state.platform_imgs[platform_selected_idx]}`
 }, [idxs, state])
 
@@ -95,7 +98,7 @@ const ProductDetail = () => {
     async function getProducts() {
       await getAll()
       let state = global_products?.find(item => item.id == strs[strs.length - 1]);
-      // console.log(global_products)
+
       setState(state)
     }
     if (global_products.length === 0) {
@@ -110,6 +113,14 @@ const ProductDetail = () => {
   useEffect(() => {
     ReactGA.pageview(location.pathname + location.search);
   }, [location]);
+
+  for (let i = 0; i < state.parts.length; i++) {
+    QueryNFT(state.parts[i].nid).then(resp => {
+      state.parts[i].balance = parseInt(resp[4])
+      // console.log(state.parts)
+      setBalance(JSON.stringify(state.parts))
+    })
+  }
 
   return (
     <div>
@@ -167,7 +178,6 @@ const ProductDetail = () => {
                       const isSelect = idxs?.includes(index);
                       const isShow = item?.platform === platforms[platform_selected_idx]?.label
                       if (!isShow) return null
-
                       return (
                         <div
                           key={index}
@@ -195,7 +205,7 @@ const ProductDetail = () => {
                             }
                           }}
                         >
-                          {item?.label?.split("-")?.join(" ")}
+                          {item?.label?.split("-")?.join(" ")}({item.balance})
                         </div>
                       )
                     })}

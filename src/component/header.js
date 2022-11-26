@@ -50,10 +50,10 @@ class Header extends React.Component {
                     history.push('/#/product')
                     window.location.reload()
                   }}>
-            <div className={this.state.button_selected === 1 ? "word_selected" : "word_empty"}>Product</div>
+            <div className={this.state.button_selected === 1 ? "word_selected" : "word_empty"}>Products</div>
           </button>
           <a style={{textDecoration: "none"}}
-             href="https://snapshot.org/#/digifun.eth">
+             href="https://forum.digifundao.com/">
             <button className={this.state.button_selected === 2 ? "button_selected" : "button_empty"}
                     style={{cursor: 'pointer'}}
                     onMouseEnter={() => {
@@ -65,35 +65,35 @@ class Header extends React.Component {
               <div className={this.state.button_selected === 2 ? "word_selected" : "word_empty"}>DAO</div>
             </button>
           </a>
-          <button className={this.state.button_selected === 3 ? "button_selected" : "button_empty"}
+          <a style={{textDecoration: "none"}}
+             href="https://digifundao.com/blogs">
+            <button className={this.state.button_selected === 3 ? "button_selected" : "button_empty"}
+                    style={{cursor: 'pointer'}}
+                    onMouseEnter={() => {
+                      this.setState({button_selected: 3})
+                    }}
+                    onMouseLeave={() => {
+                      this.setState({button_selected: 0})
+                    }}>
+              <div className={this.state.button_selected === 3 ? "word_selected" : "word_empty"}>Blogs</div>
+            </button>
+          </a>
+          <button className={this.state.button_selected === 4 ? "button_selected" : "button_empty"}
                   style={{cursor: 'pointer'}}
                   onMouseEnter={() => {
-                    this.setState({button_selected: 3})
+                    this.setState({button_selected: 4})
                   }}
                   onMouseLeave={() => {
                     this.setState({button_selected: 0})
                   }}
                   onClick={() => {
-                    history.push('/#/about')
+                    history.push('/#/videos')
                     window.location.reload()
                   }}>
-            <div className={this.state.button_selected === 3 ? "word_selected" : "word_empty"}>About</div>
+            <div className={this.state.button_selected === 4 ? "word_selected" : "word_empty"}>Videos</div>
           </button>
           <a style={{textDecoration: "none"}}
              href="https://digifundao.com/docs">
-            <button className={this.state.button_selected === 4 ? "button_selected" : "button_empty"}
-                    style={{cursor: 'pointer'}}
-                    onMouseEnter={() => {
-                      this.setState({button_selected: 4})
-                    }}
-                    onMouseLeave={() => {
-                      this.setState({button_selected: 0})
-                    }}>
-              <div className={this.state.button_selected === 4 ? "word_selected" : "word_empty"}>Docs</div>
-            </button>
-          </a>
-          <a style={{textDecoration: "none"}}
-             href="https://digifundao.com/blogs">
             <button className={this.state.button_selected === 5 ? "button_selected" : "button_empty"}
                     style={{cursor: 'pointer'}}
                     onMouseEnter={() => {
@@ -102,7 +102,7 @@ class Header extends React.Component {
                     onMouseLeave={() => {
                       this.setState({button_selected: 0})
                     }}>
-              <div className={this.state.button_selected === 5 ? "word_selected" : "word_empty"}>Blogs</div>
+              <div className={this.state.button_selected === 5 ? "word_selected" : "word_empty"}>Docs</div>
             </button>
           </a>
           <button className={this.state.button_selected === 6 ? "button_selected" : "button_empty"}
@@ -114,10 +114,10 @@ class Header extends React.Component {
                     this.setState({button_selected: 0})
                   }}
                   onClick={() => {
-                    history.push('/#/videos')
+                    history.push('/#/about')
                     window.location.reload()
                   }}>
-            <div className={this.state.button_selected === 6 ? "word_selected" : "word_empty"}>Videos</div>
+            <div className={this.state.button_selected === 6 ? "word_selected" : "word_empty"}>About</div>
           </button>
         </div>
         <Metamask/>

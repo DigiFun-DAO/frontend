@@ -583,7 +583,7 @@ constructor(props) {
         {/*<Header/>*/}
         <div className="product_content" hidden={false}>
           <div className="product_content_words">
-            <div className="product_content_words_title">Our products</div>
+            <div className="product_content_words_title">Our Products</div>
             <div className="product_content_words_comment">
               The creative products of DigiFun are the result of the collective wisdom of the community.
             </div>

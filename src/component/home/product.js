@@ -13,7 +13,7 @@ class Product extends React.Component {
       <div className="product" id="product">
         <div className="product_frame">
           <div className="product_intro">
-            <div className="product_intro_title">Product</div>
+            <div className="product_intro_title">Products</div>
             <span className="product_intro_comments">The products from DigiFun are the results of the  wisdom of the community.</span>
             <span className="product_intro_comments">Purchasing our products and you could become one part of us for the DAO governance of DigiFun.</span>
           </div>
