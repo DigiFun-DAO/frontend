@@ -7,6 +7,7 @@ const videos = [
   {src: "https://www.youtube.com/embed/videoseries?list=PLxeKnzDa2fwEHSksjuWKK4rJwlwxGZ7z7", title: "Wearable Description"},
   {src: "https://www.youtube.com/embed/videoseries?list=PLxeKnzDa2fwEVfEzwc7TpkHcNX4x0i4oi", title: "Events"},
   {src: "https://www.youtube.com/embed/videoseries?list=PLxeKnzDa2fwH_i90BaTZQFBZQ4jUpGW6U", title: "Wearable Products"},
+  {src: "https://www.youtube.com/embed/videoseries?list=PLxeKnzDa2fwFXbMzcLVmBjnU8m6fLze8q", title: "Decentraland Classes"},
 ]
 
 class Videos extends React.Component {

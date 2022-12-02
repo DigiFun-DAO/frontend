@@ -205,7 +205,7 @@ const ProductDetail = () => {
                             }
                           }}
                         >
-                          {item?.label?.split("-")?.join(" ")}({item.balance})
+                          {item?.label?.split("-")?.join(" ")}({(item.balance == undefined || item.balance == '') ? 0 : item.balance})
                         </div>
                       )
                     })}

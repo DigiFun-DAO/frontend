@@ -7,9 +7,10 @@
     "@dfinity/agent": "0.10.1",
     "@dfinity/candid": "0.10.1",
     "@dfinity/principal": "0.10.1",
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "@mui/material": "^5.4.0",
+    "@dforo3/metaforo-sdk": "^0.4.1",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.15",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -63,7 +64,8 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^6.1.1"
+    "react-router-dom": "^6.1.1",
+    "sass": "^1.56.1"
   },
   "proxy": "http://8.210.130.48:8080/"
 }
